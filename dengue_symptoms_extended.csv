@@ -1,0 +1,8 @@
+Symptom,Overall_Patients_Count,Sensitivity,Specificity,PPV,NPV,Prevalence_in_SD_pct
+Abdominal pain/tenderness,154,0.59,0.77,0.12,0.97,52.9
+Persistent Vomiting,199,0.56,0.71,0.09,0.97,55.9
+Hepatomegaly,10,0.24,0.98,0.35,0.96,5.9
+Clinical fluid accumulation,8,0.32,0.99,0.58,0.97,14.7
+Mucosal bleeding,44,0.32,0.93,0.2,0.96,23.5
+HCT rise & Platelet drop,33,0.29,0.89,0.12,0.96,8.8
+Lethargy,112,0.44,0.85,0.13,0.97,35.3

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Rank Trend of the 5 Highest-Burden States (1999-2019)",
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "DatasetDenggiMalaysia_Long.csv" 
+  },
+  "transform": [
+    {
+      "joinaggregate": [{"op": "sum", "field": "Cases", "as": "Total_Cases_Overall"}],
+      "groupby": ["State"]
+    },
+    {
+      "window": [{"op": "dense_rank", "as": "overall_rank"}],
+      "sort": [{"field": "Total_Cases_Overall", "order": "descending"}]
+    },
+    {
+      "filter": "datum.overall_rank <= 5"
+    },
+    {
+      "window": [{"op": "rank", "as": "yearly_rank"}],
+      "sort": [{"field": "Cases", "order": "descending"}],
+      "groupby": ["Year"]
+    }
+  ],
+  "mark": {"type": "line", "point": true, "interpolate": "monotone"},
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "yearly_rank",
+      "type": "quantitative",
+      "title": "Rank (Among Top 5 Overall)",
+      "sort": "descending",
+      "scale": {"zero": false},
+      "axis": {"tickMinStep": 1}
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State",
+      "scale": {"scheme": "tableau10"}
+    },
+    "tooltip": [
+      {"field": "State", "title": "State"},
+      {"field": "Year", "title": "Year"},
+      {"field": "Cases", "title": "Annual Cases", "format": ","},
+      {"field": "Total_Cases_Overall", "title": "Total Cases (1999-2019)", "format": ","}
+    ]
+  }
+}

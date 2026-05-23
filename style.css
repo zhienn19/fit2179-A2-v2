@@ -1,0 +1,134 @@
+body {
+            font-family: "Inter", sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 2rem 1.5rem;
+        }
+
+        header {
+            margin-bottom: 2.5rem;
+        }
+
+        header h1 {
+            font-family: "DM Serif Display", serif;
+            font-size: 42px;
+            margin: 0;
+            color: #0f172a;
+            text-align: center;
+        }
+
+        .subtitle {
+            /* max-width: 950px; */
+            text-align: justify;
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .intro-text {
+            max-width: 950px;
+            margin: 1rem auto 0 auto;
+            text-align: justify;
+            color: #334155;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1.2rem;
+            color: #0f172a;
+        } */
+        .section-title {
+            font-family: "DM Serif Display", serif;
+            font-size: 26px;
+            font-weight: 400;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 0.4rem;
+        }
+
+        .vis-card {
+            background: white;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            overflow: visible;
+        }
+
+        .vis-card h2,
+        .vis-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .description-card {
+            background: white;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            padding: 1.2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .description-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .description-card p {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.8;
+            margin: 0;
+            text-align: justify;
+        }
+
+        .vis-container {
+            width: 100%;
+            overflow: visible;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        footer h3 {
+            font-size: 16px;
+            color: #0f172a;
+            margin-bottom: 0.8rem;
+        }
+
+        .reference-list {
+            font-size: 13px;
+            line-height: 1.8;
+            color: rgb(0, 32, 126);
+        }
+
+        .reference-list a {
+            color: rgb(0, 32, 126);
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .reference-list a:hover {
+            text-decoration: underline;
+        }

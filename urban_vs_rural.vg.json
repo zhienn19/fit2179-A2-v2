@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Dengue cases in Urban Vs Rural area in Selangor from 2017 to 2021",
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "Dengue_Hotspots_Selangor_V2.csv" 
+  },
+  "transform": [
+    {
+      "aggregate": [{"op": "sum", "field": "Dengue_Cases_DF", "as": "Total_Cases"}],
+      "groupby": ["Year", "District"]
+    },
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "Total_Cases", "order": "descending"}],
+      "groupby": ["Year"]
+    }
+  ],
+  "mark": {"type": "line", "point": true, "interpolate": "monotone"},
+  
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year",
+      "sort": {"field": "Year"},
+      "axis": {"labelAngle": 360}
+    },
+    "y": {
+      "field": "rank",
+      "type": "quantitative",
+      "title": "District's Ranking",
+      "sort": "descending",
+      "scale": {"zero": false}
+      
+    },
+    "tooltip": [
+      {"field": "District", "title": "District"},
+      {"field": "Total_Cases", "title": "Total Cases", "type": "quantitative"}
+    ],
+    "color": {
+    "field": "District",
+    "type": "nominal",
+    "title": "District",
+    "scale": {"scheme": "set2"}
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Reported Dengue Cases by Age Group from 2018 to 2021",
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "dengue_age.csv" 
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Age_Category",
+      "type": "nominal",
+      "title": "Age Group",
+      "sort": {"field": "Age_Category"},
+      "axis": {"labelAngle": 360}
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "Cases",
+      "type": "quantitative",
+      "title": "Total Cases"
+    },
+    "tooltip": [
+      {"field": "Age_Category", "title": "Age Group"},
+      {"aggregate": "sum", "field": "Cases", "title": "Total Cases"}
+    ],
+    "color": {
+    "field": "Age_Category",
+    "type": "nominal",
+    "title": "Age Group",
+    "scale": {"scheme": "set2"},
+    "legend": {
+    "orient": "top-right",
+    "direction": "horizontal",
+    "title": "Age Group",
+    "fillColor": "white",
+    "strokeColor": "#e2e8f0",
+    "padding": 6,
+    "legendY": 10,
+    "legendX": 10
+  }
+    }
+  }
+}

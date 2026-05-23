@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Dengue Mortality Risk vs Age",
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "dengue_demographics_malaysia.csv" 
+  },
+
+  "mark": {
+    "type": "bar"
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Age Group", 
+      "type": "ordinal", 
+      "title": "Age Group",
+      "axis": {"labelAngle": 360}
+    },
+   
+    "y": {
+      "field": "Number of Deaths",
+      "type": "quantitative",
+      "title": "Mortality Rate (per 100,000)"
+    },
+    "tooltip": [
+        {"field": "Number of Deaths", "title": "Number of Deaths"},
+        {"field": "Age Group", "title": "Age Group"},
+        {"field": "Percentage", "title": "Percentage(%)"}
+    ]
+  }
+}

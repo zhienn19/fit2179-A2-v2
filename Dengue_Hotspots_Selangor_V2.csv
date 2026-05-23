@@ -1,0 +1,46 @@
+District,Year,Dengue_Cases_DF,Hotspot_Localities_DH,Mean_Cases_Per_Hotspot
+Gombak,2017,1260,77,16.36
+Gombak,2018,1311,70,18.73
+Gombak,2019,2918,159,18.35
+Gombak,2020,1621,109,14.87
+Gombak,2021,28,2,14.0
+Hulu Langat,2017,4079,252,16.19
+Hulu Langat,2018,1553,90,17.26
+Hulu Langat,2019,4732,258,18.34
+Hulu Langat,2020,2570,174,14.77
+Hulu Langat,2021,703,54,13.02
+Hulu Selangor,2017,0,0,0.0
+Hulu Selangor,2018,260,12,21.67
+Hulu Selangor,2019,494,22,22.45
+Hulu Selangor,2020,761,27,28.19
+Hulu Selangor,2021,8,1,8.0
+Klang,2017,592,46,12.87
+Klang,2018,2062,126,16.37
+Klang,2019,2292,127,18.04
+Klang,2020,2432,112,21.71
+Klang,2021,21,3,7.0
+Kuala Langat,2017,186,17,10.94
+Kuala Langat,2018,132,11,12.0
+Kuala Langat,2019,58,6,9.67
+Kuala Langat,2020,79,3,26.33
+Kuala Langat,2021,30,2,15.0
+Kuala Selangor,2017,60,4,15.0
+Kuala Selangor,2018,10,1,10.0
+Kuala Selangor,2019,141,7,20.14
+Kuala Selangor,2020,21,1,21.0
+Kuala Selangor,2021,32,1,32.0
+Petaling,2017,3840,200,19.2
+Petaling,2018,4692,231,20.31
+Petaling,2019,11054,408,27.09
+Petaling,2020,5387,292,19.1
+Petaling,2021,766,51,15.02
+Sabak Bernam,2017,0,0,0.0
+Sabak Bernam,2018,15,1,15.0
+Sabak Bernam,2019,39,2,19.5
+Sabak Bernam,2020,10,1,10.0
+Sabak Bernam,2021,0,0,0.0
+Sepang,2017,210,19,11.05
+Sepang,2018,28,2,14.0
+Sepang,2019,396,20,19.8
+Sepang,2020,412,13,31.7
+Sepang,2021,31,3,10.33

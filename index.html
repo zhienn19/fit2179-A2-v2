@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dengue Cases in Malaysia</title>
+
+    <!-- Vega Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+        integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- HEADER -->
+        <header>
+            <h1>Dengue Cases in Malaysia</h1>
+
+            <p class="subtitle">
+                Dengue fever remains one of the most persistent and critical public health challenges in Malaysia.
+                As a tropical nation characterized by rapid urbanization, high population density, and a warm humid climate,
+                Malaysia provides an ideal breeding environment for Aedes mosquitoes.
+            </p>
+
+        </header>
+
+        <!-- SECTION: MAP -->
+        <h2 class="section-title">Dengue Trends</h2>
+        <div class="vis-card">
+            <h2>Dengue Cases by States</h2>
+            <div class="vis-container" id="vis1"></div>
+        </div>
+
+        <!-- SECTION: TOP STATES + INSIGHTS -->
+        <div class="pure-g" style="margin-top: 2rem;">
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div class="vis-card" style="margin-right: 0.8rem;">
+                    <h2>Top States with Highest Dengue Cases</h2>
+                    <div id="vis2" class="vis-container"></div>
+                </div>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <div class="description-card">
+                    <h3>Key Insights</h3>
+                    <p>
+                        Johor had the highest reported confirmed case of dengue fever across 20 years.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: URBAN VS RURAL -->
+        <h2 class="section-title">Urban vs Rural Patterns</h2>
+        <div class="vis-card">
+            <h3>Urban vs Rural Disparity (Selangor Context)</h3>
+            <div class="vis-container" id="vis8"></div>
+
+            <div class="description-card">
+                <p>Over the years, Petaling District remains all-time high for confirmed Dengue cases.</p>
+
+            </div>
+        </div>
+
+        <!-- SECTION: TEMPORAL + MORTALITY -->
+        <h2 class="section-title">Temporal Trends & Mortality Rate</h2>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="vis-card" style="margin-right: 0.8rem;">
+                    <!-- <h3>Dengue Cases Trend Over the Years</h3> -->
+                    <div class="vis-container" id="vis3"></div>
+                </div>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="vis-card">
+                    <!-- <h3>Annual Mortality Profile (Total Number of Confirmed Deaths)</h3> -->
+                    <div class="vis-container" id="vis4"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: ENVIRONMENTAL -->
+        <h2 class="section-title">Environmental Impacts</h2>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="vis-card" style="margin-right: 0.8rem;">
+                    <!-- <h3>Impact of Monthly Rainfall Patterns</h3> -->
+                    <div class="vis-container" id="vis6"></div>
+                </div>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="vis-card">
+                    <!-- <h3>Impact of Ambient Temperature Levels</h3> -->
+                    <div class="vis-container" id="vis7"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: DEMOGRAPHICS -->
+        <h2 class="section-title">Demographics & Clinical Profiles</h2>
+
+        <!-- Row 1: 2 charts -->
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="vis-card" style="margin-right: 0.8rem;">
+                    <!-- <h3>Incidence Distribution by Age Group</h3> -->
+                    <div class="vis-container" id="vis9"></div>
+                </div>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="vis-card">
+                    <!-- <h3>Prevalence of Most Common Symptoms</h3> -->
+                    <div class="vis-container" id="vis10"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: full width -->
+        <div class="pure-g" style="margin-top: 1.5rem;">
+            <div class="pure-u-1">
+                <div class="vis-card">
+                    <!-- <h3>Mortality Rate vs Patient Age</h3> -->
+                    <div class="vis-container" id="vis5"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <h3>References</h3>
+
+            <div class="reference-list">
+                <p>(1) <a href="https://data.mendeley.com/datasets/r3k8rxg2cw/1" target="_blank">
+                        https://data.mendeley.com/datasets/r3k8rxg2cw/1
+                    </a></p>
+
+                <p>(2) <a href="https://archive.data.gov.my/data/ms_MY/dataset/penyakit-denggi/resource/216eb37a-d676-4c53-9f54-878e91a98e47?view_id=d5c5db57-31ef-4dfc-b9ea-01083e714fcc&"
+                        target="_blank">
+                        https://archive.data.gov.my/data/ms_MY/dataset/penyakit-denggi/resource/216eb37a-d676-4c53-9f54-878e91a98e47
+                    </a></p>
+
+                <p>(3) <a href="https://archive.data.gov.my/data/dataset/mean-temperature-rainfall-and-mean-relative-humidity-malaysia"
+                        target="_blank">
+                        https://archive.data.gov.my/data/dataset/mean-temperature-rainfall-and-mean-relative-humidity-malaysia
+                    </a></p>
+
+                <p>(4) <a href="https://www.sciencedirect.com/science/article/pii/S2772707624001267" target="_blank">
+                        https://www.sciencedirect.com/science/article/pii/S2772707624001267
+                    </a></p>
+
+                <p>(5) <a href="https://www.ceghonline.com/article/S2213-3984(25)00055-7/fulltext" target="_blank">
+                        https://www.ceghonline.com/article/S2213-3984(25)00055-7/fulltext
+                    </a></p>
+
+                <p>(6) <a href="https://www.mdpi.com/1660-4601/15/9/2018" target="_blank">
+                        https://www.mdpi.com/1660-4601/15/9/2018
+                    </a></p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- VEGA EMBEDS -->
+    <script type="text/javascript">
+        var opt = { "actions": false };
+
+        vegaEmbed('#vis1', "dengue_cases_chloropeth.vg.json", opt).catch(console.error);
+        vegaEmbed('#vis2', "top5_states.vg.json", opt).catch(console.error);
+        vegaEmbed('#vis3', "yearly_dengue_trend.vg.json", opt).catch(console.error);
+        vegaEmbed('#vis4', "cumulative_deaths_year.vg.json", opt).catch(console.error);
+        vegaEmbed('#vis5', "mortality_age.vg.json", opt).catch(console.error);
+        vegaEmbed('#vis6', "rainfall_vs_dengue.vg.json", opt).catch(console.error);
+        vegaEmbed('#vis7', "temperature_vs_dengue.vg.json", opt).catch(console.error);
+        vegaEmbed('#vis8', "urban_vs_rural.vg.json", opt).catch(console.error);
+        vegaEmbed('#vis9', "dengue_age_by_group.vg.json", opt).catch(console.error);
+        vegaEmbed('#vis10', "dengue_vs_symptoms.vg.json", opt).catch(console.error);
+    </script>
+
+</body>
+
+</html>

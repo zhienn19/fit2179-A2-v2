@@ -1,0 +1,51 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 455,
+    "width": "container",
+     "autosize": {
+        "type": "fit",
+        "contains": "content"
+                },
+
+    "title": "Most Common Symptoms in Dengue Patients",
+    "data": {
+        "url": "dengue_symptoms_extended.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "field": "Symptom",
+            "type": "nominal",
+            "title": "Symptom",
+            "axis": null
+       
+        },
+        "y": {
+            "field": "Overall_Patients_Count",
+            "type": "quantitative",
+            "title": "Number of Patients",
+            "scale": {"domain": [0, 210]}
+        },
+
+    "color": {
+      "field": "Symptom",
+      "type": "nominal",
+      "legend": {
+    "orient": "none",
+    "columns": 2,
+    "direction": "horizontal",
+    "legendX": 10,
+    "legendY": 10,
+    "title": "Symptoms",
+    "fillColor": "white",
+    "strokeColor": "#e2e8f0",
+    "padding": 6
+  }
+    },
+    "tooltip": [
+      {"field": "Symptom", "type": "nominal", "title": "Symptom"},
+      {"field": "Overall_Patients_Count", "title": "Number of Patients"}
+    ]
+  
+    }
+}

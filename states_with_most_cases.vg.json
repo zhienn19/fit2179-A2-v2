@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Ranking of States with most Dengue Cases (1999-2019)",
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "DatasetDenggiMalaysia_Long.csv" 
+  },
+  "transform": [
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "Cases", "order": "descending"}],
+      "groupby": ["Year"]
+    },
+    {
+      "filter": "datum.rank <= 5"
+    }
+  ],
+  "mark": {"type": "line", "point": true, "interpolate": "monotone"},
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "rank",
+      "type": "quantitative",
+      "title": "State Ranking",
+      "sort": "descending",
+      "scale": {"zero": false},
+      "axis": {"tickMinStep": 1}
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State",
+      "scale": {"scheme": "tableau10"}
+    },
+    "tooltip": [
+      {"field": "State", "title": "State"},
+      {"field": "Year", "title": "Year"},
+      {"field": "Cases", "title": "Number of Cases", "format": ","},
+      {"field": "rank", "title": "Rank"}
+    ]
+  }
+}

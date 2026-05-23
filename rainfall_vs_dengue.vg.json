@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Rainfall vs Dengue Case Occurence",
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "Dengue_Climate_Malaysia_2018_2021.csv" 
+  },
+  "mark": {"type": "point", "filled": true, "size": 50},
+  "encoding": {
+    "x": {
+      "field": "Avg_Rainfall_mm",
+      "type": "quantitative",
+      "title": "Average Rainfall Intensity (mm)",
+      "axis": {"labelAngle": 360}
+    },
+    "y": {
+      "field": "Dengue_Cases",
+      "type": "quantitative",
+      "title": "Number of Cases"
+    },
+
+    "tooltip": [
+      {"field": "Avg_Rainfall_mm", "title": "Average Rainfall Intensity (mm)", "format": ".1f"},
+      {"field": "Dengue_Cases", "title": "Total Cases", "type": "quantitative"}
+    ]
+  }
+}

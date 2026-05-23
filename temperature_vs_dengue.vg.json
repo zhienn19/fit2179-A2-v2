@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Temperature vs Dengue Case Occurence",
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "Dengue_Climate_Malaysia_2018_2021.csv" 
+  },
+  "mark": {"type": "point", "filled": true, "size": 50},
+  "encoding": {
+    "x": {
+      "field": "Avg_Temp_C",
+      "type": "quantitative",
+      "title": "Average Temperature (Celcius)",
+      "axis": {"labelAngle": 360},
+      "scale": {"nice": true, "zero": false, "domainMin": 26, "domainMax": 30}
+    },
+    "y": {
+      "field": "Dengue_Cases",
+      "type": "quantitative",
+      "title": "Number of Cases"
+    },
+
+    "tooltip": [
+      {"field": "Avg_Temp_C", "title": "Average Temperature (Celcius)", "format": ".1f"},
+      {"field": "Dengue_Cases", "title": "Total Cases", "type": "quantitative"}
+    ]
+  }
+}

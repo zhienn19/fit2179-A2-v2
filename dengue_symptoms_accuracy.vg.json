@@ -1,0 +1,54 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": "container",
+    "width": 600,
+
+    "title": "Diagnostic Accuracy of Dengue Warning Signs",
+    "data": {
+        "url": "dengue_symptoms_extended.csv"
+    },
+    "mark": "circle",
+    "encoding": {
+        "x": {
+            "field": "Sensitivity",
+            "type": "quantitative",
+            "title": "Sensitivity (True Positive Rate)",
+            "scale": {
+                "domain": [
+                    0,
+                    0.8
+                ]
+            }
+        },
+        "y": {
+            "field": "Specificity",
+            "type": "quantitative",
+            "title": "Specificity (True Negative Rate)",
+            "scale": {
+                "domain": [
+                    0.5,
+                    1.1
+                ]
+            }
+        },
+
+    "size": {
+      "field": "PPV",
+      "type": "quantitative",
+      "title": "Positive Predictive Value",
+      "scale": {"range": [100, 2000]}
+    },
+    "color": {
+      "field": "Symptom",
+      "type": "nominal",
+      "legend": {"orient": "right"}
+    },
+    "tooltip": [
+      {"field": "Symptom", "type": "nominal"},
+      {"field": "Sensitivity", "format": ".2f"},
+      {"field": "Specificity", "format": ".2f"},
+      {"field": "PPV", "format": ".2f", "title": "Predictive Power (PPV)"}
+    ]
+  
+    }
+}
