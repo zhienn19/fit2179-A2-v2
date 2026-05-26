@@ -7,7 +7,7 @@
     "url": "DatasetDenggiMalaysia_Long.csv" 
   },
   "transform": [
-    {"filter": "datum.Year >= 2010"},
+    {"filter": "datum.Year >= 2009"},
     {
       "joinaggregate": [{"op": "sum", "field": "Cases", "as": "Total_Cases_Overall"}],
       "groupby": ["State"]
