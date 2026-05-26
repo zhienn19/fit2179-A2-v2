@@ -132,3 +132,57 @@ body {
         .reference-list a:hover {
             text-decoration: underline;
         }
+        .interactive-controls-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 1rem 0;
+            padding: 5px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .html-legend-box {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .legend-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+        .color-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        .swatch-urban { background-color: #8531b5; }
+        .swatch-rural { background-color: #ffa640; }
+        
+        .reset-chart-btn {
+            background-color: #fff;
+            color: #4a5568;
+            border: 1px solid #cbd5e1;
+            padding: 6px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .reset-chart-btn:hover {
+            background-color: #f8fafc;
+            border-color: #94a3b8;
+            color: #1e293b;
+        }
+        .reset-chart-btn:active {
+            background-color: #f1f5f9;
+        }

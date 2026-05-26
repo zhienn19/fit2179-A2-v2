@@ -1,0 +1,184 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "District Ranking by Dengue Cases in Selangor from 2017 to 2021",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "Dengue_Hotspots_Selangor_V2.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "Dengue_Cases_DF",
+          "as": "Total_Cases"
+        }
+      ],
+      "groupby": ["Year", "District"]
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "Total_Cases",
+          "order": "descending"
+        }
+      ],
+      "groupby": ["Year"]
+    },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "Total_Cases",
+          "as": "Cumulative_Cases"
+        }
+      ],
+      "sort": [
+        {
+          "field": "Year",
+          "order": "ascending"
+        }
+      ],
+      "groupby": ["District"],
+      "frame": [null, 0]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "strokeWidth": {
+          "condition": {"param": "district_select", "value": 3},
+          "value": 3
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "cursor": "pointer",
+        "filled": true
+      },
+      "params": [
+        {
+          "name": "district_select",
+          "select": {"type": "point", "fields": ["District"], "clear": "dblclick"},
+          "value": [
+            {"District": "Petaling"},
+            {"District": "Hulu Langat"},
+            {"District": "Kuala Selangor"}
+          ]
+        }
+      ],
+      "encoding": {
+        "size": {
+          "condition": {"param": "district_select", "value": 80},
+          "value": 80
+        }
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.Year == 2021"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 65,
+        "baseline": "middle",
+        "fontStyle": "bold"
+      },
+      "encoding": {
+        "text": {"field": "District", "type": "nominal"}
+      }
+
+      
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {
+        "labelAngle": 0,
+        "grid": true
+      }
+    },
+    "y": {
+      "field": "rank",
+      "type": "quantitative",
+      "title": "District's Ranking",
+      "sort": "descending",
+      "scale": {
+        "zero": false,
+        "domain": [1, 9]
+      },
+      "axis": {
+        "grid": true,
+        "tickMinStep": 1
+      }
+    },
+    "color": {
+      "condition": {
+        "param": "district_select",
+        "field": "District",
+        "type": "nominal",
+        "title": "District",
+        "scale": {
+          "domain": [
+            "Gombak",
+            "Hulu Langat",
+            "Hulu Selangor",
+            "Klang",
+            "Kuala Langat",
+            "Kuala Selangor",
+            "Petaling",
+            "Sabak Bernam",
+            "Sepang"
+          ],
+          "range": [
+            "#8531b5",
+            "#8531b5",
+            "#ffa640",
+            "#8531b5",
+            "#ffa640",
+            "#ffa640",
+            "#8531b5",
+            "#ffa640",
+            "#ffa640"
+
+          ]
+        },
+        "legend": null
+      },
+      "value": "#d1d1d1"
+    },
+    "opacity": {
+      "condition": {"param": "district_select", "value": 1},
+      "value": 0.8
+    },
+    "order": {
+      "condition": {"param": "district_select", "value": 1},
+      "value": 0
+    },
+    "tooltip": [
+      {"field": "Year", "title": "Year"},
+      {"field": "District", "title": "District"},
+      {"field": "Total_Cases", "title": "Number of Cases", "type": "quantitative", "format": ","},
+      {"field": "rank", "type": "quantitative", "title": "Rank"},
+      {"field": "Cumulative_Cases", "type": "quantitative", "title": "Cumulative Cases (Total)", "format": ","}
+    ]
+  }
+}

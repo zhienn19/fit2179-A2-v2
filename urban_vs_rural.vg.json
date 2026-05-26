@@ -1,49 +1,128 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Dengue cases in Urban Vs Rural area in Selangor from 2017 to 2021",
-  "width": "container",
+  "title": "District Ranking by Dengue Cases in Selangor from 2017 to 2021",
+  "width": 600,
   "height": 400,
   "data": {
-    "url": "Dengue_Hotspots_Selangor_V2.csv" 
+    "url": "Dengue_Hotspots_Selangor_V2.csv"
   },
   "transform": [
     {
-      "aggregate": [{"op": "sum", "field": "Dengue_Cases_DF", "as": "Total_Cases"}],
-      "groupby": ["Year", "District"]
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "Dengue_Cases_DF",
+          "as": "Total_Cases"
+        }
+      ],
+      "groupby": [
+        "Year",
+        "District"
+      ]
     },
     {
-      "window": [{"op": "rank", "as": "rank"}],
-      "sort": [{"field": "Total_Cases", "order": "descending"}],
-      "groupby": ["Year"]
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "Total_Cases",
+          "order": "descending"
+        }
+      ],
+      "groupby": [
+        "Year"
+      ]
     }
   ],
-  "mark": {"type": "line", "point": true, "interpolate": "monotone"},
-  
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "interpolate": "monotone",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "size": 50,
+        "opacity": 1
+      }
+    }
+    
+  ],
   "encoding": {
     "x": {
       "field": "Year",
       "type": "ordinal",
       "title": "Year",
-      "sort": {"field": "Year"},
-      "axis": {"labelAngle": 360}
+      "sort": {
+        "field": "Year"
+      },
+      "axis": {
+        "labelAngle": 0,
+        "grid": true
+      }
     },
     "y": {
       "field": "rank",
       "type": "quantitative",
       "title": "District's Ranking",
       "sort": "descending",
-      "scale": {"zero": false}
-      
+      "scale": {
+        "zero": false
+      },
+      "axis": {
+        "grid": true
+      }
     },
     "tooltip": [
-      {"field": "District", "title": "District"},
-      {"field": "Total_Cases", "title": "Total Cases", "type": "quantitative"}
+      {
+        "field": "District",
+        "title": "District"
+      },
+      {
+        "field": "Total_Cases",
+        "title": "Total Cases",
+        "type": "quantitative"
+      },
+      {
+        "field": "rank",
+        "type": "quantitative",
+        "title": "Rank"
+      }
     ],
     "color": {
-    "field": "District",
-    "type": "nominal",
-    "title": "District",
-    "scale": {"scheme": "set2"}
+      
+      "field": "District",
+      "type": "nominal",
+      "title": "District",
+      "scale": {
+        "domain": [
+          "Gombak",
+          "Hulu Langat",
+          "Hulu Selangor",
+          "Klang",
+          "Kuala Langat",
+          "Kuala Selangor",
+          "Petaling",
+          "Sabak Bernam",
+          "Sepang"
+        ],
+        "range": [
+          "#ff5471"
+        ]
+      },
+      "legend": {
+        "orient": "bottom",
+        "columns": 7,
+        "symbolType": "square"
+      }
     }
   }
 }

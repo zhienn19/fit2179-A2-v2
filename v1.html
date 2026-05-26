@@ -53,7 +53,6 @@
             <div class="pure-u-1 pure-u-md-2-3">
                 <div class="vis-card" style="margin-right: 0.8rem;">
                     <h2>Top States with Highest Dengue Cases</h2>
-                    <button class="reset-chart-btn" id="reset-states-btn">Reset View</button>
                     <div id="vis2" class="vis-container"></div>
                 </div>
             </div>
@@ -72,24 +71,12 @@
         <h2 class="section-title">Urban vs Rural Patterns</h2>
         <div class="vis-card">
             <h3>Urban vs Rural Disparity (Selangor Context)</h3>
-            <div class="interactive-controls-bar">
-                <div class="html-legend-box">
-                    <div class="legend-indicator">
-                        <span class="color-swatch swatch-urban"></span> Urban Area
-                    </div>
-                    <div class="legend-indicator">
-                        <span class="color-swatch swatch-rural"></span> Rural Area
-                    </div>
-                </div>
-                <button class="reset-chart-btn" id="reset-selangor-btn">Reset View</button>
-            </div>
             <div class="vis-container" id="vis8"></div>
 
             <div class="description-card">
                 <p>Over the years, Petaling District remains all-time high for confirmed Dengue cases.</p>
 
             </div>
-            
         </div>
 
         <!-- SECTION: TEMPORAL + MORTALITY -->
@@ -198,44 +185,16 @@
         var opt = { "actions": false };
 
         vegaEmbed('#vis1', "dengue_cases_chloropeth.vg.json", opt).catch(console.error);
-        // vegaEmbed('#vis2', "top5_states.vg.json", opt).catch(console.error);
-        let statesView;
-
-            vegaEmbed('#vis2', "top5_states.vg.json", { actions: false })
-            .then(result => {
-                statesView = result.view;
-            })
-            .catch(console.error);
-
-            document.getElementById("reset-states-btn").addEventListener("click", () => {
-            vegaEmbed('#vis2', "top5_states.vg.json", { actions: false })
-                .then(result => {
-                statesView = result.view;
-                });
-            });
+        vegaEmbed('#vis2', "top5_states.vg.json", opt).catch(console.error);
         vegaEmbed('#vis3', "yearly_dengue_trend.vg.json", opt).catch(console.error);
         vegaEmbed('#vis4', "cumulative_deaths_year.vg.json", opt).catch(console.error);
         vegaEmbed('#vis5', "mortality_age.vg.json", opt).catch(console.error);
         vegaEmbed('#vis6', "rainfall_vs_dengue.vg.json", opt).catch(console.error);
         vegaEmbed('#vis7', "temperature_vs_dengue.vg.json", opt).catch(console.error);
-let selangorView;
-
-vegaEmbed('#vis8', "urban_vs_rural_v2.vg.json", { actions: false })
-  .then(result => {
-    selangorView = result.view;
-  })
-  .catch(console.error);
-
-document.getElementById("reset-selangor-btn").addEventListener("click", () => {
-  vegaEmbed('#vis8', "urban_vs_rural_v2.vg.json", { actions: false })
-    .then(result => {
-      selangorView = result.view;
-    });
-});        
+        vegaEmbed('#vis8', "urban_vs_rural.vg.json", opt).catch(console.error);
         vegaEmbed('#vis9', "dengue_age_by_group.vg.json", opt).catch(console.error);
         vegaEmbed('#vis10', "dengue_vs_symptoms.vg.json", opt).catch(console.error);
     </script>
-    
 
 </body>
 

@@ -1,16 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Rank Trend of the 5 Highest-Burden States (1999-2019)",
-  "width": "container",
+  "title": "Rank of the 5 Highest-Burden States (2010-2019)",
+  "width": 600,
   "height": 400,
   "data": {
     "url": "DatasetDenggiMalaysia_Long.csv" 
   },
   "transform": [
+    {"filter": "datum.Year >= 2010"},
     {
       "joinaggregate": [{"op": "sum", "field": "Cases", "as": "Total_Cases_Overall"}],
       "groupby": ["State"]
     },
+    
     {
       "window": [{"op": "dense_rank", "as": "overall_rank"}],
       "sort": [{"field": "Total_Cases_Overall", "order": "descending"}]
@@ -22,35 +24,114 @@
       "window": [{"op": "rank", "as": "yearly_rank"}],
       "sort": [{"field": "Cases", "order": "descending"}],
       "groupby": ["Year"]
+    },
+    {
+      "window": [{"op": "sum", "field": "Cases", "as": "Cumulative_Cases_Since_2010"}],
+      "sort": [{"field": "Year", "order": "ascending"}],
+      "groupby": ["State"],
+      "frame": [null, 0]
     }
   ],
-  "mark": {"type": "line", "point": true, "interpolate": "monotone"},
+  
+  "layer": [
+      {
+        "mark": {"type": "line", "interpolate": "monotone"},
+        "encoding": {"strokeWidth": {
+                        "condition": {
+                          "param": "state_select", 
+                          "value": 3
+                        },
+                      "value": 3
+        }}
+      
+      },
+      {
+        "mark": {"type": "point", "cursor": "pointer","filled": true,"size": 80, "opacity": 1},
+        "params": [
+        {
+          "name": "state_select",
+          "select": {
+            "type": "point",
+            "fields": ["State"],
+            "clear": "dblclick"
+          },
+          "value": [{"State": "Selangor"}]
+        }
+      ],
+      "encoding": {
+        "size": {
+          "condition": {"param": "state_select", "value": 100},
+          "value": 40
+        }
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.Year == 2019"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 35,
+        "baseline": "middle",
+        "fontStyle": "bold"
+      },
+      "encoding": {
+        "text": {"field": "State", "type": "nominal"}
+      }
+    
+    }
+
+
+  ],
+  
+  
   "encoding": {
     "x": {
       "field": "Year",
       "type": "ordinal",
       "title": "Year",
-      "axis": {"labelAngle": 0}
+      "axis": {"labelAngle": 0, "grid": true}
     },
     "y": {
       "field": "yearly_rank",
       "type": "quantitative",
       "title": "Rank (Among Top 5 Overall)",
       "sort": "descending",
-      "scale": {"zero": false},
-      "axis": {"tickMinStep": 1}
+      "scale": {"zero": false, "domain": [1, 5]},
+      "axis": {"tickMinStep": 1, "grid": true}
     },
     "color": {
-      "field": "State",
-      "type": "nominal",
-      "title": "State",
-      "scale": {"scheme": "tableau10"}
+      "condition": {
+        "param": "state_select",
+        "field": "State",
+        "type": "nominal",
+        "scale": {"domain": [
+                    "Selangor",
+                    "Kelantan",
+                    "Perak",
+                    "WPKL/Putrajaya",
+                    "Johor"
+        ],
+                  "range": ["#ffa640"]},
+        "legend": null
+      },
+      "value": "#d1d1d1"
     },
+    "opacity": {
+      "condition": {"param": "state_select", "value": 1},
+      "value": 0.8
+    },
+    "order": {
+      "condition": {"param": "state_select", "value": 1},
+      "value": 0
+    },
+    
     "tooltip": [
       {"field": "State", "title": "State"},
       {"field": "Year", "title": "Year"},
-      {"field": "Cases", "title": "Annual Cases", "format": ","},
-      {"field": "Total_Cases_Overall", "title": "Total Cases (1999-2019)", "format": ","}
+      {"field": "Cases", "title": "Number of Cases", "format": ","},
+      {"field": "Cumulative_Cases_Since_2010", "title": "Cumulative Cases (Total)", "type": "quantitative", "format": ","}
     ]
   }
 }
