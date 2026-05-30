@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Relationship Between Climate Factors and Dengue Cases",
+  "data": {
+    "url": "Dengue_Climate_Malaysia_2018_2021.csv"
+  },
+  "width": 600,
+  "height": 400,
+  "mark": {
+    "type": "point",
+    "filled": true,
+    "opacity": 0.5,
+    "stroke": "#7f8c8d",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "Avg_Temp_C",
+      "type": "quantitative",
+      "title": "Average Temperature (°C)",
+      "scale": {"domain": [26, 30]}
+    },
+    "y": {
+      "field": "Avg_Rainfall_mm",
+      "type": "quantitative",
+      "title": "Average Annual Rainfall Intensity (mm)",
+      "scale": {"domain": [0, 5000]},
+      "axis": {
+    "values": [0, 1000,  2000,  3000, 4000, 5000]
+  }
+    },
+    "size": {
+      "field": "Dengue_Cases",
+      "type": "quantitative",
+      "title": "Dengue Cases",
+      "scale": {"range": [20, 2000]},
+      "legend": {"orient": "right"}
+    },
+    
+    
+
+    "tooltip": [
+      {"field": "Dengue_Cases", "type": "quantitative", "format": ",", "title": "Total Cases"},
+      {"field": "Avg_Temp_C", "type": "quantitative", "title": "Mean Temp (°C)", "format": ".2f"},
+      {"field": "Avg_Rainfall_mm", "type": "quantitative", "title": "Mean Rainfall (mm)", "format": ".2f"}
+    ],
+    "color": {"value": "#8531b5"}
+  }
+}

@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "height": 455,
-    "width": "container",
+    "height": 355,
+    "width": 600,
      "autosize": {
         "type": "fit",
         "contains": "content"
@@ -11,36 +11,48 @@
     "data": {
         "url": "dengue_symptoms_extended.csv"
     },
-    "mark": "bar",
+    "layer": [
+        {"mark": {"type": "bar", "cursor": "pointer"},
+        "params": [
+            {
+                "name": "symptoms_select",
+                "select": {
+                    "type": "point",
+                    "fields": ["Symptom"],
+                    "clear": "dblclick"
+                },
+                "value": [{"Symptom": "Persistent Vomiting"}]
+            }
+        ]
+}
+        
+    ],
     "encoding": {
-        "x": {
+        "y": {
             "field": "Symptom",
             "type": "nominal",
             "title": "Symptom",
-            "axis": null
+            "axis": {"offset": 0.2, "domainColor": "black"},
+            "sort":"x"
+            
        
         },
-        "y": {
+        "x": {
             "field": "Overall_Patients_Count",
             "type": "quantitative",
             "title": "Number of Patients",
-            "scale": {"domain": [0, 210]}
+            "scale": {"domain": [0, 210]},
+            "axis": {"offset": 0.5}
+
         },
 
     "color": {
-      "field": "Symptom",
-      "type": "nominal",
-      "legend": {
-    "orient": "none",
-    "columns": 2,
-    "direction": "horizontal",
-    "legendX": 10,
-    "legendY": 10,
-    "title": "Symptoms",
-    "fillColor": "white",
-    "strokeColor": "#e2e8f0",
-    "padding": 6
-  }
+      "condition": {
+        "param": "symptoms_select",
+        "value": "#8531b5"
+      },
+      "value": "#cbd5e1"
+        
     },
     "tooltip": [
       {"field": "Symptom", "type": "nominal", "title": "Symptom"},

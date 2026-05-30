@@ -1,12 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Reported Dengue Cases from Year 1999 to 2019",
+  "title": "Reported Dengue Cases from Year 2009 to 2019",
   "width": "container",
-  "height": 400,
+  "height": 300,
   "data": {
     "url": "DatasetDenggiMalaysia_v2.csv" 
   },
   "transform": [
+    
     {
       "calculate": "datum.TAHUN", 
       "as": "Negeri"
@@ -21,9 +22,19 @@
     {
       "calculate": "toNumber(datum.Cases)",
       "as": "Cases_Num"
+    },
+    {"filter": "datum.Year >= 2009"}
+  ],
+
+  "layer": [
+    {
+      "mark": {"type":"line", "point":true, "strokeWidth": 3}
+    },
+     {
+      "mark": {"type":"point"}
     }
   ],
-  "mark": {"type":"line", "point":true},
+  
   "encoding": {
     "x": {
       "field": "Year",
@@ -41,7 +52,9 @@
     "tooltip": [
       {"field": "Year", "title": "Year"},
       {"aggregate": "sum", "field": "Cases_Num", "title": "Number of Cases", "format": ","}
-    ]
+    ],
+
+    "color": {"value": "#8531b5"}
 
   }
 }

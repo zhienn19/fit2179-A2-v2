@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": 
+    "Monthly Rainfall vs. Dengue Cases in Malaysia",
+  "data": {
+    "url": "monthly_dengue_weather_malaysia.csv"
+  },
+  "width": "container",
+  "height": 300,
+  "mark": {
+    "type": "circle",
+    "size": 100,
+    "opacity": 0.35,
+    "stroke": "#2c3e50",
+    "strokeWidth": 0.8
+  },
+  "encoding": {
+    "x": {
+      "field": "rainfall",
+      "type": "quantitative",
+      "title": "Monthly Rainfall Intensity (mm)",
+      "scale": {"domain": [60, 460]},
+      "axis": {"values": [60, 120, 180, 240, 300, 360, 420, 480]}
+    },
+    "y": {
+      "field": "cases",
+      "type": "quantitative",
+      "title": "Number of Recorded Dengue Cases",
+      "scale": {"zero": true}
+    },
+
+    "tooltip": [
+      {"field": "rainfall", "type": "quantitative", "title": "Rainfall (mm)"},
+      {"field": "cases", "type": "quantitative", "format": ",", "title": "Dengue Cases"}
+    ],
+    "color": {"value": "#8531b5"}
+  }
+}

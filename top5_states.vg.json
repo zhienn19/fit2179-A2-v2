@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Rank of the 5 Highest-Burden States (2010-2019)",
-  "width": 600,
-  "height": 400,
+  "title": "Rank of the 5 Highest-Burden States (2009-2019)",
+  "width": "container",
+  "height": 250,
   "data": {
     "url": "DatasetDenggiMalaysia_Long.csv" 
   },

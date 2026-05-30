@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "District Ranking by Dengue Cases in Selangor from 2017 to 2021",
-  "width": 600,
-  "height": 400,
+  "width": 460,
+  "height": 250,
   "data": {
     "url": "Dengue_Hotspots_Selangor_V2.csv"
   },

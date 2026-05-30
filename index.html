@@ -4,239 +4,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dengue Cases in Malaysia</title>
+    <title>The Dengue Chronicle | Malaysia Outbreak Monitor</title>
 
     <!-- Vega Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
-    
+    <!-- Pure CSS (lightly used for grid only) -->
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
         integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
 
-    <!-- Google Fonts -->
+    <!-- Fonts for vintage newspaper feel -->
+    <!-- <link
+        href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+        integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fondamento&family=Jockey+One&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
-
     <div class="dashboard-container">
 
-        <!-- HEADER -->
         <header>
-            <h1>Dengue Cases in Malaysia</h1>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 60px;">
 
-            <p class="subtitle">
-                Dengue fever remains one of the most persistent and critical public health challenges in Malaysia.
-                As a tropical nation characterized by rapid urbanization, high population density, and a warm humid climate,
-                Malaysia provides an ideal breeding environment for Aedes mosquitoes.
-            </p>
+                <div style="flex: 1.2; min-width: 450px; line-height: 45px;">
+                    <h1 style="font-size: 60px; margin: 0; line-height: 0.85; font-weight: 900;  color: #111;">
+                        <span style="color: #9b2a2a; font-size: 70px;">Dengue Fever</span></h1>
+                    <h2 style="font-size: 55px; margin: 8px 0 0 0; font-weight: normal; color: #333;">
+                        in <span class='bold'> Malaysia </span>
+                    </h2>
+                </div>
+                <div class="pure-u-1 pure-u-md-1-2">
+                    <!-- <div style="flex: 1; justify-content: flex-end;"> -->
+                    <p style="font-size: 16px;">
+                        As a tropical country, Malaysia has always been hospitable to mosquito populations. The
+                        combination of high humidity, frequent rainfall, and rapid urbanization creates the ideal
+                        breeding ground for the mosquitoes, turning a seasonal nuisance into an ongoing public health
+                        priority.
+                    </p>
+                    <!-- </div> -->
+                </div>
 
+
+            </div>
         </header>
 
-        <!-- SECTION: MAP -->
-        <h2 class="section-title">Dengue Trends</h2>
-        <div class="vis-card">
-            <h2>Dengue Cases by States</h2>
-            <div class="vis-container" id="vis1"></div>
-        </div>
+        <!-- SECTION 1: NATIONAL TRENDS -->
+        <div class="section-title">I. Dengue Outbreak Trends</div>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="news-card" style="margin-right: 0.8rem;">
+                    <h2>10-Year Observations on Reported Confirmed Cases</h2>
+                    <div class="vis-container" id="vis3"></div>
+                    <div class="subnote">Zulkifli, Z. (2020). Dengue Statistics in Malaysia, per state in 1999 to 2019.
+                    </div>
 
-        <!-- SECTION: TOP STATES + INSIGHTS -->
-        <div class="pure-g" style="margin-top: 2rem;">
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div class="vis-card" style="margin-right: 0.8rem;">
-                    <h2>Top States with Highest Dengue Cases</h2>
-                    <button class="reset-chart-btn" id="reset-states-btn">Reset View</button>
-                    <div id="vis2" class="vis-container"></div>
+                    <div class="description-card">
+                        <p>From the observation, the number of cases increased across 2009 to 2019.
+                            This suggests that dengue has become an increasingly significant public health challenge in
+                            Malaysia, potentially driven by rapid urbanisation, population growth, and favourable
+                            environmental conditions for mosquito breeding.
+                        </p>
+
+                    </div>
+                    <!-- <p style="padding-top: 15px;">From the observation, the number of cases increased across 2009 to 2019.</p> -->
+
                 </div>
-            </div>
 
-            <div class="pure-u-1 pure-u-md-1-3">
-                <div class="description-card">
-                    <h3>Key Insights</h3>
-                    <p>
-                        Johor had the highest reported confirmed case of dengue fever across 20 years.
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="news-card">
+                    <h2>Reported Confirmed Deaths from Dengue Fever</h2>
+                    <div class="vis-container" id="vis4"></div>
+                    <div class="subnote">(Khaw et al., 2024).Ten-year mortality study of dengue in Malaysia. IJID
+                        Regions.</div>
+                    <p>Reported confirmed deaths peaked at the year 2015.
+                        Although mortality remains relatively low compared to total infections, the spike highlights the
+                        severe consequences of delayed diagnosis, inadequate treatment, and high transmission periods.
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- SECTION: URBAN VS RURAL -->
-        <h2 class="section-title">Urban vs Rural Patterns</h2>
-        <div class="vis-card">
-            <h3>Urban vs Rural Disparity (Selangor Context)</h3>
-            <div class="interactive-controls-bar">
-                <div class="html-legend-box">
-                    <div class="legend-indicator">
-                        <span class="color-swatch swatch-urban"></span> Urban Area
+        <!-- GEOGRAPHIC CHOROPLETH -->
+
+        <div class="news-card" style="margin-top: 0.5rem;">
+            <h2>Dengue Outbreaks across the Country. Which state had the most cases?</h2>
+            <div class="vis-container" id="vis1"></div>
+
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px;">
+                <div id="slider-container" style="flex: 1;"></div>
+                <div class="subnote" style="text-align: end; margin-left: 20px; font-size: 12px; opacity: 0.75;">
+                    Zulkifli, Z. (2020). Dengue Statistics in Malaysia, per state in 1999 to 2019.
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <p style="padding-right: 20px; border-top: 0;">Public health records consistently point to a
+                            singular trend. A tiny handful of highly developed states shoulder the vast majority of the
+                            nation's caseload.</p>
                     </div>
-                    <div class="legend-indicator">
-                        <span class="color-swatch swatch-rural"></span> Rural Area
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <p style="border-top: 0; padding-bottom: 10px; padding-left: 20px;">
+                            The shifting color gradients or saturation trace the geographic march of outbreaks across
+                            state lines over time.</p>
                     </div>
                 </div>
-                <button class="reset-chart-btn" id="reset-selangor-btn">Reset View</button>
-            </div>
-            <div class="vis-container" id="vis8"></div>
-
-            <div class="description-card">
-                <p>Over the years, Petaling District remains all-time high for confirmed Dengue cases.</p>
 
             </div>
-            
+            <!-- <p >Dengue cases can be seen is on the rise every year.</p> -->
         </div>
 
-        <!-- SECTION: TEMPORAL + MORTALITY -->
-        <h2 class="section-title">Temporal Trends & Mortality Rate</h2>
+        <!-- SECTION 2: REGIONAL HOTSPOTS -->
+        <div class="section-title">II. Regional Hotspots & Breakdown</div>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-2">
-                <div class="vis-card" style="margin-right: 0.8rem;">
-                    <!-- <h3>Dengue Cases Trend Over the Years</h3> -->
-                    <div class="vis-container" id="vis3"></div>
+                <div class="news-card" style="margin-right: 0.8rem;">
+                    <h2>Top States with Highest Number of Cases</h2>
+                    <div class="interactive-controls-bar">
+                        <button class="reset-chart-btn" id="reset-states-btn">Reset View</button>
+                    </div>
+                    <!-- <div style="display: flex; justify-content: space-between;">
+                        <h2 style="margin: 0;">Top States with Highest Number of Cases</h2>
+                        <button class="reset-chart-btn" id="reset-states-btn">Reset View</button>
+                    </div> -->
+                    <div id="vis2" class="vis-container"></div>
+                    <div class="subnote" font-size: 12px; opacity: 0.75;>
+                        Zulkifli, Z. (2020). Dengue Statistics in Malaysia, per state in 1999 to 2019.
+                    </div>
+                    
+                    <div style="padding-top: 15px;">
+                        <p>Public health records show that Selangor, Kelantan, Perak, Putrajaya, and Johor had the most
+                            confirmed dengue cases over a 10-year period. It was also noted that different states ranked
+                            differently each year based on the reported confirmed cases of dengue fever.
+                            Selangor had the most Dengue cases in 2019.
+                        </p>
+                    </div>
+                    <!-- <p>Public health records show that Selangor, Kelantan, Perak, WPKL/Putrajaya, and Johor had the most
+                        confirmed dengue cases over a 10-year period. It was also noted that different states ranked
+                        differently each year based on the reported confirmed cases of dengue fever.
+                    </p> -->
+
                 </div>
+
             </div>
 
             <div class="pure-u-1 pure-u-md-1-2">
-                <div class="vis-card">
-                    <!-- <h3>Annual Mortality Profile (Total Number of Confirmed Deaths)</h3> -->
-                    <div class="vis-container" id="vis4"></div>
+                <div class="news-card" style="margin-right: 0.8rem;">
+                    <!-- <div style="display: flex; justify-content: space-between;">
+                        <h2 style="margin: 0;">Urban vs Rural Disparity (Selangor)</h2>
+                        <button class="reset-chart-btn" id="reset-selangor-btn">Reset View</button> -->
+                    <!-- </div> -->
+                    <h2>Urban vs Rural Disparity — Selangor districts</h2>
+                    <div class="interactive-controls-bar">
+                        <div class="html-legend-box">
+                            <div class="legend-indicator"><span class="color-swatch swatch-urban"></span> Urban Area
+                            </div>
+                            <div class="legend-indicator"><span class="color-swatch swatch-rural"></span> Rural Area
+                            </div>
+                        </div>
+                        <button class="reset-chart-btn" id="reset-selangor-btn">Reset View</button>
+                    </div>
+                    <div id="vis8" class="vis-container"></div>
+                    <div class="subnote">(Mohd Hardy Abdullah et al., 2025). Spatiotemporal dynamics of dengue hotspots
+                        in an urbanizing landscape: A five-year analysis in Selangor, Malaysia.</div>
+                    <!-- <div class="subnote">A five-year analysis in Selangor, Malaysia.</div> -->
+                    <p>Evidence indicates that urban areas in Selangor experience a higher incidence of dengue cases.
+                        This may be due to unmonitored stagnant water, which fosters mosquito breeding and
+                        subsequently increases transmission rates. Notably, the Petaling District continues to be one of
+                        the most persistent hotspots within the state.
+                    </p>
                 </div>
             </div>
+
+            <!-- <div class="pure-u-1 pure-u-md-1-3">
+            <div class="insight-box" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="font-family: 'Playfair Display'; margin-bottom: 8px; border: none;">From the Editor's desk</h3>
+                <p class="tight-column">Selangor and its surrounding urban centres consistently bear the highest reported confirmed cases of dengue fever. This is due to population density and rapid inter-district mobility. The Klang Valley remains the nation's epicentre of outbreaks.</p>
+            </div>
+        </div> -->
         </div>
 
-        <!-- SECTION: ENVIRONMENTAL -->
-        <h2 class="section-title">Environmental Impacts</h2>
+
+
+        <!-- SECTION 3: ENVIRONMENTAL DRIVERS -->
+        <div class="section-title">III. Environmental Impacts: Rainfall & Temperature</div>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-2">
-                <div class="vis-card" style="margin-right: 0.8rem;">
-                    <!-- <h3>Impact of Monthly Rainfall Patterns</h3> -->
+                <div class="news-card" style="margin-right: 0.8rem;">
+                    <h2>Does Rainfall affects Mosquitoes?</h2>
                     <div class="vis-container" id="vis6"></div>
+                    <div class="subnote">Portal Data Terbuka Malaysia. (n.d.). Archive.data.gov.my.</div>
+                    <p>Rainfall is typically followed by a spike in dengue cases after a short delay. However, if the
+                        rainfall is exceptionally heavy(≥200mm) it can actually have the opposite effect. This flushes
+                        away mosquito eggs and larvae while destroying stagnant water breeding sites, temporarily
+                        reducing the mosquito population.
+                    </p>
+                    <!-- <div class="subnote">Monthly precipitation (mm) overlaid on dengue incidence, showing 1-month lag effect</div> -->
                 </div>
             </div>
-
             <div class="pure-u-1 pure-u-md-1-2">
-                <div class="vis-card">
-                    <!-- <h3>Impact of Ambient Temperature Levels</h3> -->
+                <div class="news-card">
+                    <h2>How does Temperature Affects Mosquitoes?</h2>
                     <div class="vis-container" id="vis7"></div>
+                    <div class="subnote">Portal Data Terbuka Malaysia. (n.d.). Archive.data.gov.my.</div>
+                    <!-- <div class="subnote">Warmer temperatures accelerate mosquito breeding cycles & viral replication</div> -->
+                    <p>Temperature plays an important role in mosquito survival and viral replication. Warmer conditions
+                        generally accelerate mosquito development and shorten the virus incubation period, contributing
+                        to increased dengue transmission when temperatures remain within a suitable range.</p>
                 </div>
             </div>
         </div>
 
-        <!-- SECTION: DEMOGRAPHICS -->
-        <h2 class="section-title">Demographics & Clinical Profiles</h2>
-
-        <!-- Row 1: 2 charts -->
+        <!-- SECTION 4: DEMOGRAPHICS & CLINICAL PROFILES -->
+        <div class="section-title">IV. Demographics & Clinical Profiles</div>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-2">
-                <div class="vis-card" style="margin-right: 0.8rem;">
-                    <!-- <h3>Incidence Distribution by Age Group</h3> -->
+                <div class="news-card" style="margin-right: 0.8rem;">
+                    <!-- <h2 style="margin: 0;">Age distribution of Dengue Cases</h2> -->
+                    <div style="display: flex; justify-content: space-between;">
+                        <h2 style="margin: 0;">Age distribution of Dengue Cases</h2>
+                        <button class="reset-chart-btn" id="reset-age-group-btn">Reset View</button>
+                    </div>
+                    <!-- <button class="reset-chart-btn" id="reset-age-group-btn">Reset View</button> -->
                     <div class="vis-container" id="vis9"></div>
+                    
+                    <div class="subnote">Portal Data Terbuka Malaysia. (n.d.). Archive.data.gov.my.</div>
+                    <div style="padding-top: 13px;">
+                        <p>Dengue cases were most prevalent among individuals aged 20-39 years.
+                        The nation's most socially and economically active demographic. Their daily routines—commuting
+                        to work, gathering in urban centers, and navigating outdoor spaces during peak mosquito biting
+                        hours—make them the primary targets for transmission and the main drivers of regional outbreak
+                        velocity.</p>
+                    </div>
+                    <!-- <p>Dengue cases were most prevalent among individuals aged 20-39 years.
+                        The nation's most socially and economically active demographic. Their daily routines—commuting
+                        to work, gathering in urban centers, and navigating outdoor spaces during peak mosquito biting
+                        hours—make them the primary targets for transmission and the main drivers of regional outbreak
+                        velocity.</p> -->
+                    <!-- <div class="subnote">Incidence rate per age cohort (children and young adults most affected)</div> -->
                 </div>
             </div>
-
             <div class="pure-u-1 pure-u-md-1-2">
-                <div class="vis-card">
-                    <!-- <h3>Prevalence of Most Common Symptoms</h3> -->
+                <div class="news-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h2 style="margin: 0;">Most Common Dengue Fever's Symptoms</h2>
+                        <button class="reset-chart-btn" id="reset-symptom-btn">Reset View</button>
+                    </div>
+                    <!-- <h2>Most Common Dengue Fever's Symptoms</h2> -->
                     <div class="vis-container" id="vis10"></div>
+                    <div class="subnote">
+                        (Ahmad et al., 2018).The Sensitivity, Specificity and Accuracy of Warning Signs in Predicting
+                        Severe Dengue, the Severe Dengue Prevalence and Its Associated Factors.
+                    </div>
+                    <p>Persistent vomitting, abdominal pain and lethargy are the top 3 most common symptoms found in
+                        Dengue Patients.
+                        identifying these prevalent markers early allows healthcare providers to intervene before
+                        critical complications like platelet drops or fluid accumulation develop. Patients are advised
+                        to go to hospital if symptoms persists.
+                    </p>
+                    <!-- <div class="subnote">Fever, headache and myalgia dominate clinical presentation</div> -->
                 </div>
             </div>
         </div>
 
-        <!-- Row 2: full width -->
-        <div class="pure-g" style="margin-top: 1.5rem;">
+        <!-- mortality vs age group -->
+        <div class="pure-g" style="margin-top: 0.6rem;">
             <div class="pure-u-1">
-                <div class="vis-card">
-                    <!-- <h3>Mortality Rate vs Patient Age</h3> -->
+                <div class="news-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h2 style="margin: 0;">Mortality Rate Based on Age Group: Which category are at a higher risk?</h2>
+                        <button class="reset-chart-btn" id="reset-mortality-btn">Reset View</button>
+                    </div>
+                    <!-- <h2>Mortality Rate Based on Age Group: Which category are at a higher risk?</h2> -->
                     <div class="vis-container" id="vis5"></div>
+                    <div class="subnote">(Khaw et al., 2024).Ten-year mortality study of dengue in Malaysia. IJID
+                        Regions.</div>
+
+                    <div class="insight-box">
+                        <div class="pure-g">
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                <p style="padding-right: 20px; border-top: 0;">
+                                    While the elderly are traditionally viewed as the most vulnerable, mortality rates
+                                    actually peak drastically in the 45–59 age group. This indicates that middle-aged
+                                    adults face the highest fatal risk during an Outbreaks
+                            </div>
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                <p style="border-top: 0; padding-bottom: 10px; padding-left: 20px;">
+                                    —likely due to a combination of comorbidities and delayed hospital admission—making
+                                    early clinical testing vital for this specific workforce demographic.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- <div class="subnote">CFR (Case Fatality Rate) per age bracket — highest risk for elderly ≥60 years</div> -->
                 </div>
             </div>
         </div>
 
-        <!-- FOOTER -->
+        <!-- FOOTER: REFERENCES & DATA SOURCES (short lines) -->
         <footer>
-            <h3>References</h3>
-
-            <div class="reference-list">
-                <p>(1) <a href="https://data.mendeley.com/datasets/r3k8rxg2cw/1" target="_blank">
-                        https://data.mendeley.com/datasets/r3k8rxg2cw/1
-                    </a></p>
-
-                <p>(2) <a href="https://archive.data.gov.my/data/ms_MY/dataset/penyakit-denggi/resource/216eb37a-d676-4c53-9f54-878e91a98e47?view_id=d5c5db57-31ef-4dfc-b9ea-01083e714fcc&"
-                        target="_blank">
-                        https://archive.data.gov.my/data/ms_MY/dataset/penyakit-denggi/resource/216eb37a-d676-4c53-9f54-878e91a98e47
-                    </a></p>
-
-                <p>(3) <a href="https://archive.data.gov.my/data/dataset/mean-temperature-rainfall-and-mean-relative-humidity-malaysia"
-                        target="_blank">
-                        https://archive.data.gov.my/data/dataset/mean-temperature-rainfall-and-mean-relative-humidity-malaysia
-                    </a></p>
-
-                <p>(4) <a href="https://www.sciencedirect.com/science/article/pii/S2772707624001267" target="_blank">
-                        https://www.sciencedirect.com/science/article/pii/S2772707624001267
-                    </a></p>
-
-                <p>(5) <a href="https://www.ceghonline.com/article/S2213-3984(25)00055-7/fulltext" target="_blank">
-                        https://www.ceghonline.com/article/S2213-3984(25)00055-7/fulltext
-                    </a></p>
-
-                <p>(6) <a href="https://www.mdpi.com/1660-4601/15/9/2018" target="_blank">
-                        https://www.mdpi.com/1660-4601/15/9/2018
-                    </a></p>
+            <h3 style="text-align: center; font-size: 25px;">References</h3>
+            <div class="reference-list" style="text-align: center;">
+                <p>(1) <a href="https://data.mendeley.com/datasets/r3k8rxg2cw/1"
+                        target="_blank">https://data.mendeley.com/datasets/r3k8rxg2cw/1</a></p>
+                <p>(2) <a
+                        href="https://archive.data.gov.my/data/ms_MY/dataset/penyakit-denggi/resource/216eb37a-d676-4c53-9f54-878e91a98e47"
+                        target="_blank">https://archive.data.gov.my/data/ms_MY/dataset/penyakit-denggi</a></p>
+                <p>(3) <a
+                        href="https://archive.data.gov.my/data/dataset/mean-temperature-rainfall-and-mean-relative-humidity-malaysia"
+                        target="_blank">https://archive.data.gov.my/data/dataset/mean-temperature-rainfall-and-mean-relative-humidity-malaysia</a>
+                </p>
+                <p>(4) <a href="https://www.sciencedirect.com/science/article/pii/S2772707624001267"
+                        target="_blank">https://www.sciencedirect.com/science/article/pii/S2772707624001267</a></p>
+                <p>(5) <a href="https://www.ceghonline.com/article/S2213-3984(25)00055-7/fulltext"
+                        target="_blank">https://www.ceghonline.com/article/S2213-3984(25)00055-7/fulltext</a></p>
+                <p>(6) <a href="https://www.mdpi.com/1660-4601/15/9/2018"
+                        target="_blank">https://www.mdpi.com/1660-4601/15/9/2018</a></p>
             </div>
         </footer>
-
     </div>
 
-    <!-- VEGA EMBEDS -->
     <script type="text/javascript">
         var opt = { "actions": false };
 
+        // embed all charts
         vegaEmbed('#vis1', "dengue_cases_chloropeth.vg.json", opt).catch(console.error);
-        // vegaEmbed('#vis2', "top5_states.vg.json", opt).catch(console.error);
-        let statesView;
-
-            vegaEmbed('#vis2', "top5_states.vg.json", { actions: false })
-            .then(result => {
-                statesView = result.view;
-            })
-            .catch(console.error);
-
-            document.getElementById("reset-states-btn").addEventListener("click", () => {
-            vegaEmbed('#vis2', "top5_states.vg.json", { actions: false })
-                .then(result => {
-                statesView = result.view;
-                });
-            });
         vegaEmbed('#vis3', "yearly_dengue_trend.vg.json", opt).catch(console.error);
         vegaEmbed('#vis4', "cumulative_deaths_year.vg.json", opt).catch(console.error);
-        vegaEmbed('#vis5', "mortality_age.vg.json", opt).catch(console.error);
-        vegaEmbed('#vis6', "rainfall_vs_dengue.vg.json", opt).catch(console.error);
+        // vegaEmbed('#vis5', "mortality_age.vg.json", opt).catch(console.error);
+        vegaEmbed('#vis6', "rainfall_vs_dengue_v2.vg.json", opt).catch(console.error);
         vegaEmbed('#vis7', "temperature_vs_dengue.vg.json", opt).catch(console.error);
-let selangorView;
+      //  vegaEmbed('#vis9', "dengue_age_by_group.vg.json", opt).catch(console.error);
+        // vegaEmbed('#vis10', "dengue_vs_symptoms.vg.json", opt).catch(console.error);
 
-vegaEmbed('#vis8', "urban_vs_rural_v2.vg.json", { actions: false })
-  .then(result => {
-    selangorView = result.view;
-  })
-  .catch(console.error);
+        // reset for states bar chart
+        let statesView;
+        vegaEmbed('#vis2', "top5_states.vg.json", { actions: false })
+            .then(result => { statesView = result.view; })
+            .catch(console.error);
+        document.getElementById("reset-states-btn").addEventListener("click", () => {
+            vegaEmbed('#vis2', "top5_states.vg.json", { actions: false })
+                .then(result => { statesView = result.view; })
+                .catch(console.error);
+        });
 
-document.getElementById("reset-selangor-btn").addEventListener("click", () => {
-  vegaEmbed('#vis8', "urban_vs_rural_v2.vg.json", { actions: false })
-    .then(result => {
-      selangorView = result.view;
-    });
-});        
-        vegaEmbed('#vis9', "dengue_age_by_group.vg.json", opt).catch(console.error);
-        vegaEmbed('#vis10', "dengue_vs_symptoms.vg.json", opt).catch(console.error);
+        let mortalityView;
+        vegaEmbed('#vis5', "mortality_age.vg.json", { actions: false })
+            .then(result => { mortalityView = result.view; })
+            .catch(console.error);
+        document.getElementById("reset-mortality-btn").addEventListener("click", () => {
+            vegaEmbed('#vis5', "mortality_age.vg.json", { actions: false })
+                .then(result => { mortalityView = result.view; })
+                .catch(console.error);
+        });
+
+        // reset for urban/rural selangor chart
+        let selangorView;
+        vegaEmbed('#vis8', "urban_vs_rural_v2.vg.json", { actions: false })
+            .then(result => { selangorView = result.view; })
+            .catch(console.error);
+        document.getElementById("reset-selangor-btn").addEventListener("click", () => {
+            vegaEmbed('#vis8', "urban_vs_rural_v2.vg.json", { actions: false })
+                .then(result => { selangorView = result.view; });
+        });
+
+        let ageGroupView;
+        vegaEmbed('#vis9', "dengue_age_by_group.vg.json", { actions: false })
+            .then(result => { ageGroupView = result.view; })
+            .catch(console.error);
+        document.getElementById("reset-age-group-btn").addEventListener("click", () => {
+            vegaEmbed('#vis9', "dengue_age_by_group.vg.json", { actions: false })
+                .then(result => { ageGroupView = result.view; })
+                .catch(console.error);
+        });
+
+        let symptomView;
+        vegaEmbed('#vis10', "dengue_vs_symptoms.vg.json", { actions: false })
+            .then(result => { symptomView = result.view; })
+            .catch(console.error);
+        document.getElementById("reset-symptom-btn").addEventListener("click", () => {
+            vegaEmbed('#vis10', "dengue_vs_symptoms.vg.json", { actions: false })
+                .then(result => { symptomView = result.view; })
+                .catch(console.error);
+        });
     </script>
-    
-
 </body>
+<script src="events.js"></script>
 
 </html>

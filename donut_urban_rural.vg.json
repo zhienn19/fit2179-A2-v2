@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "Dengue_Hotspots_Selangor_V2.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "datum.District == 'Gombak' || datum.District == 'Hulu Langat' || datum.District == 'Klang' || datum.District == 'Petaling' ? 'Urban' : 'Rural'",
+      "as": "Region_Type"
+    },
+    {
+      "aggregate": [{"op": "sum", "field": "Dengue_Cases_DF", "as": "Region_Cases"}],
+      "groupby": ["Region_Type"]
+    },
+    {
+      "joinaggregate": [{"op": "sum", "field": "Region_Cases", "as": "Grand_Total"}]
+    },
+    {
+      "calculate": "datum.Region_Cases / datum.Grand_Total",
+      "as": "Percentage"
+    }
+  ],
+  "encoding": {
+    "theta": {"field": "Region_Cases", "type": "quantitative"},
+    "color": {
+      "field": "Region_Type",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "domain": ["Urban", "Rural"],
+        "range": ["#8531b5", "#ffa640"]
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 50, "outerRadius": 100},
+      "encoding": {
+        "tooltip": [
+          {"field": "Region_Type", "type": "nominal"},
+          {"field": "Region_Cases", "type": "quantitative", "title": "Total Cases", "format": ","},
+          {"field": "Percentage", "type": "quantitative", "title": "Percentage", "format": ".1%"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "radius": 80, "fontSize": 12, "fontWeight": "bold", "fill": "black", "padAngle": 55},
+      "encoding": {
+        "text": {"field": "Region_Type", "type": "nominal"}
+      }
+    },
+ {
+      "mark": {"type": "text", "radius": 75, "fontSize": 10, "fill": "white"},
+      "encoding": {
+        "text": {"field": "Percentage", "type": "quantitative", "format": ".1%"}
+      }
+    }
+  ]
+}

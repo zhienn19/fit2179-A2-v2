@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "National Dengue Cases vs Climate Factors (2018-2021)",
+  "subtitle": "Aggregated across all states",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "Dengue_Climate_Malaysia_2018_2021.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {"op": "sum", "field": "Dengue_Cases", "as": "Total_Cases"},
+        {"op": "mean", "field": "Avg_Rainfall_mm", "as": "National_Rainfall"},
+        {"op": "mean", "field": "Avg_Temp_C", "as": "National_Temp"}
+      ],
+      "groupby": ["Year"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar", "color": "#6baed6", "opacity": 0.6},
+      "encoding": {
+        "y": {
+          "field": "National_Rainfall", 
+          "type": "quantitative", 
+          "title": "National Average Rainfall (mm)", 
+          "axis": {"titleColor": "#6baed6", "format": "d"}, 
+          "scale": {"domainMin": 0}
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "color": "#de2d26", "strokeWidth": 3, "point": {"size": 80, "filled": true}},
+      "encoding": {
+        "y": {
+          "field": "Total_Cases", 
+          "type": "quantitative", 
+          "title": "Total Dengue Cases", 
+          "axis": {"titleColor": "#de2d26", "format": ",.0f"}, 
+          "scale": {"domainMin": 0}
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "color": "#31a354", "strokeWidth": 2, "strokeDash": [5, 5]},
+      "encoding": {
+        "y": {
+          "field": "National_Temp", 
+          "type": "quantitative", 
+          "title": "Temperature (°C)", 
+          "axis": {"titleColor": "#31a354"}
+        }
+      }
+    }
+  ],
+  "encoding": {
+    "x": {"field": "Year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": 0, "grid": true}},
+    "tooltip": [
+      {"field": "Year", "title": "Year"},
+      {"field": "Total_Cases", "title": "Total Cases", "format": ",.0f"},
+      {"field": "National_Rainfall", "title": "National Avg Rainfall", "format": ".0f"},
+      {"field": "National_Temp", "title": "National Avg Temp", "format": ".1f"}
+    ]
+  },
+  "resolve": {"scale": {"y": "independent"}}
+}

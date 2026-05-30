@@ -1,0 +1,114 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Relationship between Climate Factors and Number of Dengue Cases",
+
+  "width": 550,
+  "height": 400,
+  "data": {
+    "url": "Dengue_Climate_Malaysia_2018_2021_v2.csv"
+  },
+  "params": [
+    {
+      "name": "year_brush",
+      "value": 2021,
+      "bind": {
+        "input": "range",
+        "min": 2018,
+        "max": 2021,
+        "step": 1,
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [
+  {
+    "filter": "datum.Year == year_brush"
+  },
+  {
+    "joinaggregate": [
+      {"op": "sum", "field": "Dengue_Cases", "as": "Total_State_Cases"}
+    ],
+    "groupby": ["State"]
+  },
+  {
+    "joinaggregate": [
+      {"op": "max", "field": "Total_State_Cases", "as": "Max_Cases"}
+    ]
+  }
+],
+  "encoding": {
+    "x": {
+      "field": "Avg_Temp_C", 
+      "type": "quantitative", 
+      "title": "Temperature (°C)",
+      "scale": {"domain": [25, 30]}
+    },
+    "y": {
+      "field": "Avg_Rainfall_mm", 
+      "type": "quantitative", 
+      "title": "Rainfall (mm)",
+      "scale": {"domain": [0, 5000]}
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle", 
+        "tooltip": true, 
+        "stroke":"black",
+        "strokeWidth": 0.75,
+        "opacity": 0.6
+      },
+      "encoding": {
+        "size": {
+          "field": "Dengue_Cases",
+          "type": "quantitative",
+          "title": "Dengue Cases",
+          "scale": {"range": [200, 1200]},
+          "legend": {"symbolStrokeWidth": 0.6}
+        },
+          "color": {
+          "condition": [
+            {"test": "datum.State_Rank == 1", "value": "#8531b5"},
+            {"test": "datum.State_Rank <= 3", "value": "#8531b5"}
+          ],
+          "value": "#ffa640"
+        },
+        "opacity": {
+          "condition": [
+            {"test": "datum.State_Rank <= 3", "value": 0.6}
+          ],
+          "value": 0.3
+        },
+
+        "tooltip": [
+          {"field": "State", "title": "State"},
+          {"field": "Dengue_Cases", "title": "Cases", "format": ",.0f"},
+          {"field": "Avg_Temp_C", "title": "Temp (°C)", "format": ".1f"},
+          {"field": "Avg_Rainfall_mm", "title": "Rainfall (mm)", "format": ".0f"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.State_Rank <= 3"}
+      ],
+    
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 18,
+        "dy": 0,
+        "fontWeight": "bold",
+        "fontSize": 11,
+        "color": "#8531b5"
+      },
+      "encoding": {
+        "text": {
+          "field": "State",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

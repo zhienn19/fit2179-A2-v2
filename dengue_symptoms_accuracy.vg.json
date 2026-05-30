@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "height": "container",
+    "height": 600,
     "width": 600,
 
     "title": "Diagnostic Accuracy of Dengue Warning Signs",

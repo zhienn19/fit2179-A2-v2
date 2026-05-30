@@ -1,13 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Reported Dengue Cases over 20 years (1999 - 2019)",
-    "subtitle": "Interactive map tracing historical cases per 100,000 people (1999 to 2019).",
-    "fontSize": 18,
-    "anchor": "start"
-  },
-  "width": "container",
-  "height": 450,
+  "title": 
+    "Reported Dengue Cases over 20 years (1999 - 2019)",
+  
+  "width": 1218,
+  "height": 400,
   "autosize": {
     "type": "fit",
     "contains": "content"
@@ -19,6 +16,7 @@
   "top": 20,
   "bottom": 20
 },
+
   
   "params": [
     {
@@ -29,10 +27,12 @@
         "min": 1999,
         "max": 2019,
         "step": 1,
-        "name": "Select Year: "
+        "name": "Select Year: ",
+        "element": "#slider-container"
       }
     }
   ],
+
 
   "projection": {
     "type": "mercator",
@@ -42,6 +42,7 @@
 
 
   "layer": [
+    
     {
       "data": {
         "url": "clipped_map.json",
@@ -62,10 +63,13 @@
         ]
       }
     },
+    
     {
       "data": {
         "url": "DatasetDenggiMalaysia_Normalized.csv"
+        
       },
+
       "transform": [
         {
           "filter": "datum.Year == Select_Year"
@@ -90,8 +94,26 @@
             "key": "properties.shapeName"
           },
           "as": "geo"
+        },
+        {
+          "window": [
+            {
+              "op": "sum",
+              "field": "Cases_Per_100k",
+              "as": "Total_Cases_Selected_Year"
+            }
+          ],
+          "frame": [null, null]
+        },
+        {
+          "calculate": "datum.Cases_Per_100k / datum.Total_Cases_Selected_Year",
+          "as": "Percentage_Of_National"
+        
         }
+        
       ],
+
+      
       "mark": {
         "type": "geoshape",
         "stroke": "#ffffff",
@@ -106,7 +128,6 @@
   "field": "Cases_Per_100k",
   "type": "quantitative",
   "scale": {
-    "type": "threshold",
     "domain": [50, 150, 300, 600],
     "scheme": "purples"
   },
@@ -114,17 +135,24 @@
     "type": "symbol",
     "symbolType": "square",
     "symbolSize": 150,
-    "title": "Dengue cases per 100k people",
+    "title": ["Dengue Cases", "per 100k people"],
     "titleOrient": "top",
-    "orient": "right",
-    "labelFontSize": 12,
-    "titleFontSize": 14,
+    "orient": "bottom-right",
     "direction": "vertical",
+    "labelFontSize": 11,
+    "titleFontSize": 13,
     "padding": 10,
+    "offset": 15,
     "titleLimit": 300,
     "labelOffset": 12,
-    "values": [49, 149, 299, 599, 601],
-    "labelExpr": "datum.value === 49 ? '0 - 50' : datum.value === 149 ? '50 - 150' : datum.value === 299 ? '150 - 300' : datum.value === 599 ? '300 - 600' : '≥ 600'"
+    "symbolStrokeColor": "black",
+    "symbolStrokeWidth": 0.5,
+    "gradientStrokeColor": "black",
+    "gradientStrokeWidth": 1.5,
+    "values": [25, 100, 225, 450, 700],
+
+  "labelExpr":
+    "datum.value == 25 ? '0-50' : datum.value == 100 ? '50-150' : datum.value == 225 ? '150-300' : datum.value == 450 ? '300-600' : '≥600'"
   }
 },
         "tooltip": [
@@ -133,17 +161,18 @@
             "type": "nominal",
             "title": "State"
           },
-          {
-            "field": "Cases",
-            "type": "quantitative",
-            "title": "Raw Dengue Cases",
-            "format": ","
-          },
+
           {
             "field": "Cases_Per_100k",
             "type": "quantitative",
             "title": "Cases per 100,000 people",
-            "format": ".2f"
+            "format": ".0f"
+          },
+          {
+            "field": "Percentage_Of_National",
+            "type": "quantitative",
+            "title": "Percentage",
+            "format": ".2%"
           },
           {
             "field": "Year",
@@ -153,5 +182,7 @@
         ]
       }
     }
+   
+    
   ]
 }

@@ -7,16 +7,27 @@
     "url": "dengue_demographics_malaysia.csv" 
   },
 
-  "mark": {
-    "type": "bar"
-  },
+  "layer": [
+    { "mark": {
+    "type": "bar", "cursor": "pointer"},
+    "params": [{
+      "name": "age_group_select",
+      "select": {
+        "type": "point",
+        "fields": ["Age_Group"],
+        "clear": "dblclick"
+      },
+      "value": [{"Age_Group": "45-59"}]
+    }]
+}
+  ],
 
   "encoding": {
     "x": {
-      "field": "Age Group", 
+      "field": "Age_Group", 
       "type": "ordinal", 
       "title": "Age Group",
-      "axis": {"labelAngle": 360}
+      "axis": {"labelAngle": 0}
     },
    
     "y": {
@@ -24,6 +35,17 @@
       "type": "quantitative",
       "title": "Mortality Rate (per 100,000)"
     },
+
+    "color": {
+      "condition": {
+        "param": "age_group_select",
+        
+        "value": "#8531b5"
+      },
+      "value": "#cbd5e1"
+    },
+
+
     "tooltip": [
         {"field": "Number of Deaths", "title": "Number of Deaths"},
         {"field": "Age Group", "title": "Age Group"},
