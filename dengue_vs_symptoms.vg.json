@@ -59,8 +59,8 @@
           "value": 10
         },
         "y2": {
-          "value": 50
-        }
+          "value": 65
+        }, "tooltip":null
       }
     },
         {
@@ -71,7 +71,7 @@
       },
       "transform": [
         {
-          "calculate": "['Most Patients had Persistent Vomitting', 'followed by Abdominal Pain and feeling Lethargic']",
+          "calculate": "['Most patients who are infected with Dengue fever', 'are likely to suffer from Persistent Vomitting', 'followed by Abdominal Pain and feeling Lethargic.']",
           "as": "box_text"
         }
       ],
@@ -91,7 +91,7 @@
         "text": {
           "field": "box_text",
           "type": "nominal"
-        }
+        }, "tooltip":null
 
       }
     }

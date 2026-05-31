@@ -69,19 +69,19 @@
       },
       "transform": [
         {
-          "calculate": "['Year 2019 recorded', 'the highest during this', 'timeline']",
+          "calculate": "['Year 2019 recorded the', 'highest during this timeline.', 'Potentially caused by', 'city developments.']",
           "as": "box_text"
         }
       ],
       "mark": {
         "type": "text",
         "align": "left",
-        "fontSize": 10,
+        "fontSize": 11,
         "fill": "#c8863c"
       },
       "encoding": {
         "x": {
-          "value": 385
+          "value": 360
         },
         "y": {
           "value": 12
@@ -89,7 +89,7 @@
         "text": {
           "field": "box_text",
           "type": "nominal"
-        }
+        }, "tooltip": null
 
       }
     },
@@ -118,7 +118,7 @@
         },
         "y2": {
           "value": 285
-        }
+        }, "tooltip": null
       }
     },
     {
@@ -136,12 +136,12 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "fontSize": 10,
+        "fontSize": 11,
         "fill": "#c8863c"
       },
       "encoding": {
         "x": {
-          "value": 85
+          "value": 90
         },
         "y": {
           "value": 275
@@ -149,7 +149,7 @@
         "text": {
           "field": "box_text",
           "type": "nominal"
-        }
+        }, "tooltip":null
 
       }
     }

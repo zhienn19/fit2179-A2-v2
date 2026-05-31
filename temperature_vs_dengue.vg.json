@@ -18,7 +18,7 @@
       },
       "transform": [
         {
-          "calculate": "['Yearly Average Temperature', 'around 29℃ had the most cases']",
+          "calculate": "['Yearly Average Temperature around 29℃', 'had the most cases. Warmer temperature', 'speeds up mosquito incubation period.']",
           "as": "box_text"
         }
       ],
@@ -30,15 +30,15 @@
       },
       "encoding": {
         "x": {
-          "value": 300
+          "value": 260
         },
         "y": {
-          "value": 15
+          "value": 20
         },
         "text": {
           "field": "box_text",
           "type": "nominal"
-        }
+        }, "tooltip":null
 
       }
     }
@@ -48,7 +48,7 @@
     "x": {
       "field": "Avg_Temp_C",
       "type": "quantitative",
-      "title": "Yearly Average Temperature (Celcius)",
+      "title": "Yearly Average Temperature (℃)",
       "axis": {"labelAngle": 360},
       "scale": {"nice": true, "zero": false, "domainMin": 25, "domainMax": 30}
     },
@@ -60,7 +60,7 @@
     },
 
     "tooltip": [
-      {"field": "Avg_Temp_C", "title": "Average Temperature (Celcius)", "format": ".1f"},
+      {"field": "Avg_Temp_C", "title": "Average Temperature (℃)", "format": ".1f"},
       {"field": "Dengue_Cases", "title": "Total Cases", "type": "quantitative"}
     ],
     "color": {"value": "#8531b5"}

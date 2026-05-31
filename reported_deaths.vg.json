@@ -60,7 +60,7 @@
       },
       "transform": [
         {
-          "calculate": "['Year 2015 recorded', 'the most deaths']",
+          "calculate": "['Year 2015 recorded the most deaths.', 'Possibly caused by many factors such as', 'mutated species of mosquito which are more' , 'deadly.']",
           "as": "box_text"
         }
       ],
@@ -69,7 +69,7 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "fontSize": 10,
+        "fontSize": 11,
         "fill": "#c8863c"
       },
       "encoding": {
@@ -82,7 +82,7 @@
         "text": {
           "field": "box_text",
           "type": "nominal"
-        }
+        }, "tooltip": null
       }
     }
   ],

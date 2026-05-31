@@ -177,7 +177,7 @@
         .swatch-rural { background-color: #ffa640; }
 
         .reset-chart-btn {
-            background: transparent;
+            background: #ffffff;
             border: 1px solid #a0927c;
             padding: 5px 14px;
             font-family: 'Inter', sans-serif;
@@ -191,7 +191,7 @@
         }
 
         .reset-chart-btn:hover {
-            background: #e8e0d2;
+            background: #e2cdab;
             border-color: #6b4c3b;
         }
 

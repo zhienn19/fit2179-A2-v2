@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Dengue Mortality Risk vs Age",
+  "title": "Dengue Mortality Risk vs Age (2012-2021)",
   "width": "container",
   "height": 400,
   "data": {
@@ -35,7 +35,7 @@
       },
       "encoding": {
         "x": {
-          "value":1040
+          "value":1065
         },
         "x2": {
           "value": 820
@@ -44,8 +44,8 @@
           "value": 35
         },
         "y2": {
-          "value": 75
-        }
+          "value": 110
+        }, "tooltip":null
       }
     },
     {
@@ -56,7 +56,7 @@
       },
       "transform": [
         {
-          "calculate": "['Age Group of 45-59 has higher mortality risk', 'when they are infected with Dengue Fever']",
+          "calculate": "['Age Group of 45-59 has higher mortality risk', 'when they are infected with Dengue Fever.', 'Factors such as delayed treatment or unmonitored', 'underlying health risks require urgent care.', 'can be considered.']",
           "as": "box_text"
         }
       ],
@@ -76,7 +76,7 @@
         "text": {
           "field": "box_text",
           "type": "nominal"
-        }
+        }, "tooltip":null
 
       }
     }
@@ -93,7 +93,7 @@
     "y": {
       "field": "Number of Deaths",
       "type": "quantitative",
-      "title": "Mortality Rate (per 100,000)"
+      "title": "Number of Deaths"
     },
 
     "color": {
@@ -108,7 +108,7 @@
 
     "tooltip": [
         {"field": "Number of Deaths", "title": "Number of Deaths"},
-        {"field": "Age Group", "title": "Age Group"},
+        {"field": "Age_Group", "title": "Age Group"},
         {"field": "Percentage", "title": "Percentage(%)"}
     ]
   }
