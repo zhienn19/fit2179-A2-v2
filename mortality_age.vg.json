@@ -35,7 +35,7 @@
       },
       "encoding": {
         "x": {
-          "value":1065
+          "value":1090
         },
         "x2": {
           "value": 820
@@ -56,14 +56,14 @@
       },
       "transform": [
         {
-          "calculate": "['Age Group of 45-59 has higher mortality risk', 'when they are infected with Dengue Fever.', 'Factors such as delayed treatment or unmonitored', 'underlying health risks require urgent care.', 'can be considered.']",
+          "calculate": "['Age Group of 45-59 has higher mortality risk', 'when they are infected with Dengue Fever. Factors', 'such as delayed treatment or unmonitored', 'underlying health risks require urgent care can be', 'put into consideration.']",
           "as": "box_text"
         }
       ],
       "mark": {
         "type": "text",
         "align": "left",
-        "fontSize": 10,
+        "fontSize": 11,
         "fill": "#111111"
       },
       "encoding": {

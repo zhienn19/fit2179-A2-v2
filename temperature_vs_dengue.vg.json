@@ -25,12 +25,12 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "fontSize": 10,
+        "fontSize": 11,
         "fill": "#c8863c"
       },
       "encoding": {
         "x": {
-          "value": 260
+          "value": 250
         },
         "y": {
           "value": 20

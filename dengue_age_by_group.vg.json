@@ -44,7 +44,7 @@
           "value": 30
         },
         "y2": {
-          "value": 110
+          "value": 125
         }, "tooltip":null
       }
     },
@@ -56,14 +56,14 @@
       },
       "transform": [
         {
-          "calculate": "['Age Group of 20-39 are more prone to Dengue Fever','as they tend to be at outdoors during mosquitoes',' active hours. Especially students and working citizens',' who are on their way back home by public transport', 'may get easily bitten during those hours.']",
+          "calculate": "['Age Group of 20-39 are more prone to Dengue',' Fever as they tend to be at outdoors during','mosquitoes active hours. Especially students','and working citizens who are on their way back',' home by public transport may get easily bitten','during those hours.']",
           "as": "box_text"
         }
       ],
       "mark": {
         "type": "text",
         "align": "left",
-        "fontSize": 10,
+        "fontSize": 11,
         "fill": "#111111"
       },
       "encoding": {

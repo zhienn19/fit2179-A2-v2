@@ -50,7 +50,7 @@
       },
       "encoding": {
         "x": {
-          "value":425
+          "value":445
         },
         "x2": {
           "value": 180
@@ -78,7 +78,7 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "fontSize": 10,
+        "fontSize": 11,
         "fill": "#111111"
       },
       "encoding": {
