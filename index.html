@@ -88,8 +88,13 @@
             </div>
             <div class="pure-u-1 pure-u-md-1-2">
                 <div class="news-card">
-                    <h2>Reported Confirmed Deaths from Dengue Fever</h2>
-                    <div class="vis-container" id="vis4"></div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <h2 style="margin: 0;">Reported Confirmed Deaths</h2>
+                        <button class="reset-chart-btn" id="reset-year-btn">Reset View</button>
+                    </div>
+                    <!-- <h2>Reported Confirmed Deaths</h2>
+                    <button class="reset-chart-btn" id="reset-year-btn">Reset View</button> -->
+                    <div class="vis-container" id="vis4" style="padding-top: 16px;"></div>
                     <div class="subnote">(Khaw et al., 2024).Ten-year mortality study of dengue in Malaysia. IJID
                         Regions.</div>
                     <p>Reported confirmed deaths <span class="bold">peaked</span> at the <span class="bold">year 2015</span>.
@@ -244,7 +249,7 @@
                         <button class="reset-chart-btn" id="reset-age-group-btn">Reset View</button>
                     </div>
                     <!-- <button class="reset-chart-btn" id="reset-age-group-btn">Reset View</button> -->
-                    <div class="vis-container" id="vis9"></div>
+                    <div class="vis-container" id="vis9" style="padding-top: 16px;"></div>
                     
                     <div class="subnote">Portal Data Terbuka Malaysia. (n.d.). Archive.data.gov.my.</div>
                     <div style="padding-top: 13px;">
@@ -269,7 +274,7 @@
                         <button class="reset-chart-btn" id="reset-symptom-btn">Reset View</button>
                     </div>
                     <!-- <h2>Most Common Dengue Fever's Symptoms</h2> -->
-                    <div class="vis-container" id="vis10"></div>
+                    <div class="vis-container" id="vis10" style="padding-top: 16px;"></div>
                     <div class="subnote">
                         (Ahmad et al., 2018).The Sensitivity, Specificity and Accuracy of Warning Signs in Predicting
                         Severe Dengue, the Severe Dengue Prevalence and Its Associated Factors.
@@ -294,7 +299,7 @@
                         <button class="reset-chart-btn" id="reset-mortality-btn">Reset View</button>
                     </div>
                     <!-- <h2>Mortality Rate Based on Age Group: Which category are at a higher risk?</h2> -->
-                    <div class="vis-container" id="vis5"></div>
+                    <div class="vis-container" id="vis5" style="padding-top: 16px;"></div>
                     <div class="subnote">(Khaw et al., 2024).Ten-year mortality study of dengue in Malaysia. IJID
                         Regions.</div>
 
@@ -380,7 +385,7 @@
         // embed all charts
         vegaEmbed('#vis1', "dengue_cases_chloropeth.vg.json", opt).catch(console.error);
         vegaEmbed('#vis3', "yearly_dengue_trend.vg.json", opt).catch(console.error);
-        vegaEmbed('#vis4', "cumulative_deaths_year.vg.json", opt).catch(console.error);
+        // vegaEmbed('#vis4', "reported_deaths.vg.json", opt).catch(console.error);
         // vegaEmbed('#vis5', "mortality_age.vg.json", opt).catch(console.error);
         vegaEmbed('#vis6', "rainfall_vs_dengue_v2.vg.json", opt).catch(console.error);
         vegaEmbed('#vis7', "temperature_vs_dengue.vg.json", opt).catch(console.error);
@@ -395,6 +400,16 @@
         document.getElementById("reset-states-btn").addEventListener("click", () => {
             vegaEmbed('#vis2', "top5_states.vg.json", { actions: false })
                 .then(result => { statesView = result.view; })
+                .catch(console.error);
+        });
+
+        let yearView;
+        vegaEmbed('#vis4', "reported_deaths.vg.json", { actions: false })
+            .then(result => { yearView = result.view; })
+            .catch(console.error);
+        document.getElementById("reset-year-btn").addEventListener("click", () => {
+            vegaEmbed('#vis4', "reported_deaths.vg.json", { actions: false })
+                .then(result => { yearView = result.view; })
                 .catch(console.error);
         });
 

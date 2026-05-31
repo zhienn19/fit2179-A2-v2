@@ -1,0 +1,117 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Number of Deaths by Dengue from 2012 to 2021",
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "dengue_mortality_trends_malaysia.csv" 
+  },
+
+  "transform": [
+    {
+      "sort": [{"field": "Year"}],
+      "window": [{
+        "op": "sum",
+        "field": "Number_of_Deaths",
+        "as": "Cumulative_Deaths"
+      }]
+    }
+  ],
+  "layer": [
+    {
+
+      "mark": {
+        "type": "bar",
+        "size": 3
+      }
+    },
+    {
+
+      "mark": {
+        "type": "circle",
+        "size": 120,
+        "opacity": 1
+      }
+    },
+    {
+        "mark": {"type": "point", "cursor": "pointer","filled": true,"size": 80, "opacity": 1},
+        "params": [
+        {
+          "name": "year_select",
+          "select": {
+            "type": "point",
+            "fields": ["Year"],
+            "clear": "dblclick"
+          },
+          "value": [{"Year": "2015"}]
+        }],
+    "encoding": {
+        "size": {
+          "condition": {"param": "year_select", "value": 100},
+          "value": 40
+        }
+      }},
+    {
+
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "['Year 2015 recorded', 'the most deaths']",
+          "as": "box_text"
+        }
+      ],
+
+      
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 10,
+        "fill": "#c8863c"
+      },
+      "encoding": {
+        "x": {
+          "value": 220
+        },
+        "y": {
+          "value": 15
+        },
+        "text": {
+          "field": "box_text",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+
+  "encoding": {
+    "x": {
+      "field": "Year", 
+      "type": "ordinal", 
+      "title": "Year",
+      "axis": {"labelAngle": 0}
+    },
+   
+    "y": {
+      "field": "Number_of_Deaths",
+      "type": "quantitative",
+      "title": "Number of Deaths"
+    },
+    "color": {
+      "condition": {
+        "param": "year_select",
+       
+  "value": "#8531b5"
+      },
+      "value": "#d1d1d1"
+    },
+    "tooltip": [
+        { "field": "Year", "title": "Year"},
+        {"field": "Number_of_Deaths", "title": "Number of Deaths"}
+        
+    ]
+  }
+}
