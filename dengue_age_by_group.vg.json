@@ -19,6 +19,66 @@
         },
         "value": [{"Age_Category": "20-39"}]
       }]
+    },
+      {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "fill": "purple",
+        "stroke": "#000000",
+        "cornerRadius": 4,
+        "opacity": 0.12
+      },
+      "encoding": {
+        "x": {
+          "value":430
+        },
+        "x2": {
+          "value": 270
+        },
+        "y": {
+          "value": 30
+        },
+        "y2": {
+          "value": 65
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "['Age Group of 20-39', 'are more prone to Dengue Fever']",
+          "as": "box_text"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 10,
+        "fill": "#111111"
+      },
+      "encoding": {
+        "x": {
+          "value": 275
+        },
+        "y": {
+          "value": 43
+        },
+        "text": {
+          "field": "box_text",
+          "type": "nominal"
+        }
+
+      }
     }
     
   ],

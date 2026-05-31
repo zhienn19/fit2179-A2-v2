@@ -19,7 +19,67 @@
       },
       "value": [{"Age_Group": "45-59"}]
     }]
-}
+},
+  {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "fill": "purple",
+        "stroke": "#000000",
+        "cornerRadius": 4,
+        "opacity": 0.12
+      },
+      "encoding": {
+        "x": {
+          "value":1040
+        },
+        "x2": {
+          "value": 820
+        },
+        "y": {
+          "value": 35
+        },
+        "y2": {
+          "value": 75
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "['Age Group of 45-59 has higher mortality risk', 'when they are infected with Dengue Fever']",
+          "as": "box_text"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 10,
+        "fill": "#111111"
+      },
+      "encoding": {
+        "x": {
+          "value": 830
+        },
+        "y": {
+          "value": 48
+        },
+        "text": {
+          "field": "box_text",
+          "type": "nominal"
+        }
+
+      }
+    }
   ],
 
   "encoding": {

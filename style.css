@@ -204,6 +204,7 @@
             font-family: 'Old Standard TT', monospace;
             /* color: #5e4d38; */
             color: "#9b2a2a";
+            padding-bottom: 20px;
         }
 
         footer h3 {
@@ -221,6 +222,7 @@
 
         .reference-list p {
             margin: 0;
+            padding-left: 2em; text-indent: -2em; margin-bottom: 15px;
         }
 
         .reference-list a {

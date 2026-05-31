@@ -6,10 +6,44 @@
   "data": {
     "url": "Dengue_Climate_Malaysia_2018_2021_v2.csv" 
   },
-
-  "mark": {"type": "point", "filled": true, "size": 70, "opacity": 0.35,
+  "layer": [
+    {"mark": {"type": "point", "filled": true, "size": 70, "opacity": 0.35,
     "stroke": "#2c3e50",
-    "strokeWidth": 0.8},
+    "strokeWidth": 0.8}},
+      {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "['Yearly Average Temperature', 'around 29℃ had the most cases']",
+          "as": "box_text"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 10,
+        "fill": "#c8863c"
+      },
+      "encoding": {
+        "x": {
+          "value": 300
+        },
+        "y": {
+          "value": 15
+        },
+        "text": {
+          "field": "box_text",
+          "type": "nominal"
+        }
+
+      }
+    }
+  ],
+  
   "encoding": {
     "x": {
       "field": "Avg_Temp_C",

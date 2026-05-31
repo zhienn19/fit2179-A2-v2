@@ -32,6 +32,126 @@
     },
      {
       "mark": {"type":"point"}
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "fill": "purple",
+        "stroke": "#000000",
+        "cornerRadius": 4,
+        "opacity": 0
+      },
+      "encoding": {
+        "x": {
+          "value":360
+        },
+        "x2": {
+          "value": 490
+        },
+        "y": {
+          "value": 5
+        },
+        "y2": {
+          "value": 40
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "['Year 2019 recorded', 'the highest during this', 'timeline']",
+          "as": "box_text"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 10,
+        "fill": "#c8863c"
+      },
+      "encoding": {
+        "x": {
+          "value": 385
+        },
+        "y": {
+          "value": 12
+        },
+        "text": {
+          "field": "box_text",
+          "type": "nominal"
+        }
+
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "fill": "purple",
+        "stroke": "#000000",
+        "cornerRadius": 4,
+        "opacity": 0
+      },
+      "encoding": {
+        "x": {
+          "value":180
+        },
+        "x2": {
+          "value": 300
+        },
+        "y": {
+          "value": 250
+        },
+        "y2": {
+          "value": 285
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "['Year 2011 had', 'the lowest']",
+          "as": "box_text"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 10,
+        "fill": "#c8863c"
+      },
+      "encoding": {
+        "x": {
+          "value": 85
+        },
+        "y": {
+          "value": 275
+        },
+        "text": {
+          "field": "box_text",
+          "type": "nominal"
+        }
+
+      }
     }
   ],
   
@@ -57,4 +177,5 @@
     "color": {"value": "#8531b5"}
 
   }
+  
 }

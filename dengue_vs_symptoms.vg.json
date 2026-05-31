@@ -12,26 +12,95 @@
         "url": "dengue_symptoms_extended.csv"
     },
     "layer": [
-        {"mark": {"type": "bar", "cursor": "pointer"},
-        "params": [
-            {
-                "name": "symptoms_select",
-                "select": {
-                    "type": "point",
-                    "fields": ["Symptom"],
-                    "clear": "dblclick"
-                },
-                "value": [{"Symptom": "Persistent Vomiting"}]
-            }
+        {
+            "mark": {
+                "type": "bar",
+                "cursor": "pointer"
+            },
+            "params": [
+                {
+                    "name": "symptoms_select",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "Symptom"
+                        ],
+                        "clear": "dblclick"
+                    },
+                    "value": [
+                        {
+                            "Symptom": "Persistent Vomiting"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+      "data": {
+        "values": [
+          {}
         ]
-}
-        
+      },
+      "mark": {
+        "type": "rect",
+        "fill": "purple",
+        "stroke": "#000000",
+        "cornerRadius": 4,
+        "opacity": 0.12
+      },
+      "encoding": {
+        "x": {
+          "value":425
+        },
+        "x2": {
+          "value": 180
+        },
+        "y": {
+          "value": 10
+        },
+        "y2": {
+          "value": 50
+        }
+      }
+    },
+        {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "['Most Patients had Persistent Vomitting', 'followed by Abdominal Pain and feeling Lethargic']",
+          "as": "box_text"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 10,
+        "fill": "#111111"
+      },
+      "encoding": {
+        "x": {
+          "value": 190
+        },
+        "y": {
+          "value": 25
+        },
+        "text": {
+          "field": "box_text",
+          "type": "nominal"
+        }
+
+      }
+    }
     ],
     "encoding": {
         "y": {
             "field": "Symptom",
             "type": "nominal",
-            "title": "Symptom",
+            "title": "Symptoms",
             "axis": {"offset": 0.2, "domainColor": "black"},
             "sort":"x"
             

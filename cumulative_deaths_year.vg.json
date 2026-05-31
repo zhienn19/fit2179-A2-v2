@@ -17,13 +17,48 @@
       }]
     }
   ],
-  "mark": {
+  "layer": [
+   { "mark": {
     "type": "area",
     "line": {
       "strokeWidth": 3
     },
     "opacity": 0.3
-  },
+  }},
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "['Year 2015 recorded', 'the most deaths']",
+          "as": "box_text"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 10,
+        "fill": "#c8863c"
+      },
+      "encoding": {
+        "x": {
+          "value": 220
+        },
+        "y": {
+          "value": 15
+        },
+        "text": {
+          "field": "box_text",
+          "type": "nominal"
+        }
+
+      }
+    }
+  ],
+  
   
 
   "encoding": {
