@@ -35,7 +35,7 @@
       },
       "encoding": {
         "x": {
-          "value":520
+          "value":525
         },
         "x2": {
           "value": 270
@@ -64,11 +64,12 @@
         "type": "text",
         "align": "left",
         "fontSize": 11,
-        "fill": "#111111"
+        "fill": "#111111",
+        "opacity": 0.8
       },
       "encoding": {
         "x": {
-          "value": 275
+          "value": 280
         },
         "y": {
           "value": 47
