@@ -31,7 +31,7 @@
         "fill": "purple",
         "stroke": "#000000",
         "cornerRadius": 4,
-        "opacity": 0.12
+        "opacity": 0
       },
       "encoding": {
         "x": {
@@ -65,14 +65,14 @@
         "align": "left",
         "fontSize": 11,
         "fill": "#111111",
-        "opacity": 0.8
+        "opacity": 0.6
       },
       "encoding": {
         "x": {
-          "value": 830
+          "value": 820
         },
         "y": {
-          "value": 48
+          "value": 42
         },
         "text": {
           "field": "box_text",

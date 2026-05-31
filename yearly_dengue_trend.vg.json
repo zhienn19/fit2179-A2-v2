@@ -77,7 +77,8 @@
         "type": "text",
         "align": "left",
         "fontSize": 11,
-        "fill": "#c8863c"
+        "fill": "#111111",
+        "opacity": 0.6
       },
       "encoding": {
         "x": {
@@ -137,7 +138,8 @@
         "type": "text",
         "align": "left",
         "fontSize": 11,
-        "fill": "#c8863c"
+        "fill": "#111111",
+        "opacity": 0.6
       },
       "encoding": {
         "x": {
