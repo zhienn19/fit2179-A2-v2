@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Reported Dengue Cases over 20 years (1999 - 2019)",
+  "title": "Reported Dengue Cases over 20 years Across Malaysia (1999 - 2019)",
   "width": 1218,
   "height": 400,
   "autosize": {
